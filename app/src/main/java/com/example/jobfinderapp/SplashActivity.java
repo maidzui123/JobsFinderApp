@@ -7,10 +7,11 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SplashActivity extends AppCompatActivity {
-    private TextView tvSplashLogo;
+    private ImageView tvSplashLogo;
     private static final String KEY_FIRST_INSTALL = "KEY_FIRST_INSTALL";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if(mySharePreferences.getBooleanValue(KEY_FIRST_INSTALL)) {
                     // Main
-                    startActivity(MainActivity.class);
+                    startActivity(SignUpActivity.class);
                 }
                 else {
                     // On Boarding

@@ -41,7 +41,7 @@ public class OnBoardingActivity extends AppCompatActivity {
                     viewPager2.setCurrentItem(viewPager2.getCurrentItem()+1);
                 }
                 else {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
                 }
             }
         });
