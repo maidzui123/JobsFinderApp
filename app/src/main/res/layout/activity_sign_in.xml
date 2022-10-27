@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".SignInActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,29 +34,29 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:src="@drawable/logo_app"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:src="@drawable/logo_app"/>
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/tvSignUpTitle"
+            android:id="@+id/tvSignInTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:text="Sign Up"
             android:fontFamily="casual"
-            android:textStyle="bold"
-            android:textAlignment="center"
             android:gravity="center"
+            android:text="Sign In"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="50sp" />
+            android:textSize="50sp"
+            android:textStyle="bold" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Please fill the details and create account"
+            android:text="Please login to continue our app"
             android:textColor="#999999"
             android:fontFamily="sans-serif-light"
             android:textSize="16sp"
@@ -67,39 +67,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Username"
+            android:hint="Username or email"
+            android:textColorHint="#999999"
             app:boxStrokeColor="@color/green"
-            app:hintTextColor="@color/black"
-            android:textColorHint="#999999">
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtSignUpUsername"
+                android:id="@+id/edtSignInUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
                 android:inputType="text"
                 android:singleLine="true"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:boxStrokeColor="@color/green"
-            app:hintTextColor="@color/black"
-            android:hint="Email"
-            android:textColorHint="#999999">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtSignUpEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:fontFamily="sans-serif-light"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -116,76 +95,65 @@
             app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtSignUpPassword"
+                android:id="@+id/edtSignInPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
                 android:inputType="textPassword"
                 android:singleLine="true"
-                android:fontFamily="sans-serif-light"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <TextView
+            android:id="@+id/tvForgetPass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Forget Password?"
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="end"/>
+        <Button
+            android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Confirm Password"
-            android:textColorHint="#999999"
-            app:boxStrokeColor="@color/green"
-            app:hintTextColor="@color/black"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtSignUpConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/btnSignUp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:backgroundTint="@color/black"
+            android:fontFamily="sans-serif-light"
             android:paddingStart="20dp"
             android:paddingTop="15dp"
             android:paddingEnd="20dp"
             android:paddingBottom="15dp"
-            android:text="Sign Up"
+            android:text="Login"
             android:textSize="18sp"
-            android:fontFamily="sans-serif-light"
-            app:cornerRadius="10dp"
-            android:layout_marginTop="16dp"/>
+            app:cornerRadius="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            >
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Already have an Account ?"
+                android:text="Don't have an Account ?"
                 android:textColor="@color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:fontFamily="sans-serif-light"/>
 
             <TextView
-                android:id="@+id/tvSignUp"
+                android:id="@+id/tvSignIn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="Sign In"
+                android:text="Sign Up"
                 android:textColor="@color/blue"
+                android:textSize="16sp"
                 android:textStyle="bold"
-                android:textSize="16sp" />
+                android:fontFamily="sans-serif-light"/>
 
 
         </LinearLayout>
