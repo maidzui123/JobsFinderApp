@@ -49,33 +49,31 @@
     <RelativeLayout
         android:id="@+id/rlFooter"
         android:layout_width="match_parent"
-        android:layout_height="52dp"
+        android:layout_height="80dp"
         android:layout_alignParentBottom="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp">
-
-        <me.relex.circleindicator.CircleIndicator3
-            android:id="@+id/circle_indicator"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            app:ci_drawable="@drawable/bg_circle_grey"
-            app:ci_height="8dp"
-            app:ci_width="8dp" />
-
         <Button
             android:id="@+id/btnNext"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:background="@drawable/btn_on_boarding"
             android:text="Next"
             android:textAllCaps="false"
             android:textSize="18sp"
             app:backgroundTint="@null"
             android:fontFamily="sans-serif-light"/>
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/circle_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_below="@+id/btnNext"
+            android:layout_centerHorizontal="true"
+            app:ci_drawable="@drawable/bg_circle_grey"
+            android:layout_marginTop="10dp"
+            app:ci_height="8dp"
+            app:ci_width="8dp" />
     </RelativeLayout>
 
 </RelativeLayout>

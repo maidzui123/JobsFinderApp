@@ -26,7 +26,7 @@ public class OnBoardingFragment2 extends Fragment {
         String title = "Find Trusted Company";
         SpannableString s = new SpannableString(title);
         s.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 13,0);
-        s.setSpan(new ForegroundColorSpan(Color.parseColor("#00FF7F")), 13, 20,0);
+        s.setSpan(new ForegroundColorSpan(Color.parseColor("#F15A07")), 13, 20,0);
         s.setSpan(new StyleSpan(Typeface.BOLD),5,20,0);
         tlTitleFm2.setText(s);
         return mView;

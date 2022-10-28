@@ -28,7 +28,7 @@ public class OnBoardingFragment1 extends Fragment {
         tlTitleFm1 = mView.findViewById(R.id.tvTitleFm1);
         String title = "Easy Online Apply";
         SpannableString s = new SpannableString(title);
-        s.setSpan(new ForegroundColorSpan(Color.parseColor("#00FF7F")), 0, 5,0);
+        s.setSpan(new ForegroundColorSpan(Color.parseColor("#F15A07")), 0, 5,0);
         s.setSpan(new ForegroundColorSpan(Color.BLACK), 5, 17,0);
         s.setSpan(new StyleSpan(Typeface.BOLD),0,12,0);
         tlTitleFm1.setText(s);

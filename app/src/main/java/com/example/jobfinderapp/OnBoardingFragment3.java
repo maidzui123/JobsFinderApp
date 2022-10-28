@@ -30,7 +30,7 @@ public class OnBoardingFragment3 extends Fragment {
         String title = "Best Way to Find Your Dream Job";
         SpannableString s = new SpannableString(title);
         s.setSpan(new ForegroundColorSpan(Color.BLACK), 0, 9,0);
-        s.setSpan(new ForegroundColorSpan(Color.parseColor("#00FF7F")), 22, 31,0);
+        s.setSpan(new ForegroundColorSpan(Color.parseColor("#F15A07")), 22, 31,0);
         s.setSpan(new StyleSpan(Typeface.BOLD),9,31,0);
         tlTitleFm3.setText(s);
         return mView;

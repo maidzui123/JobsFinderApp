@@ -28,7 +28,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         });
         String title = "Reset Password";
         SpannableString s = new SpannableString(title);
-        s.setSpan(new ForegroundColorSpan(Color.parseColor("#00FF7F")), 6, 14,0);
+        s.setSpan(new ForegroundColorSpan(Color.parseColor("#F15A07")), 6, 14,0);
         tvResetPassTitle.setText(s);
     }
 }

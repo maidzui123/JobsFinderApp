@@ -38,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         });
         String title = "Sign Up";
         SpannableString s = new SpannableString(title);
-        s.setSpan(new ForegroundColorSpan(Color.parseColor("#00FF7F")), 5, 7,0);
+        s.setSpan(new ForegroundColorSpan(Color.parseColor("#F15A07")), 5, 7,0);
         tvSignUpTitle.setText(s);
     }
 

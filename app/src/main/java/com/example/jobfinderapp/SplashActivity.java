@@ -25,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 if(mySharePreferences.getBooleanValue(KEY_FIRST_INSTALL)) {
                     // Main
-                    startActivity(SignUpActivity.class);
+                    startActivity(SignInActivity.class);
                 }
                 else {
                     // On Boarding

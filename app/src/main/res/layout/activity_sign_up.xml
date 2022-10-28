@@ -13,33 +13,28 @@
         android:layout_marginEnd="22dp"
         android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
+                android:layout_alignParentLeft="true"
                 android:background="@drawable/on_boarding_stroke"
                 android:fontFamily="casual"
                 android:padding="5dp"
                 android:text="JØbsFinder"
                 android:textColor="@color/black"
                 android:textSize="28sp"
-                android:textStyle="bold"
-                tools:ignore="MissingConstraints" />
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_alignParentRight="true"
                 android:src="@drawable/logo_app"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/tvSignUpTitle"
@@ -68,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="Username"
-            app:boxStrokeColor="@color/green"
+            app:boxStrokeColor="@color/orange"
             app:hintTextColor="@color/black"
             android:textColorHint="#999999">
 
@@ -88,7 +83,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:boxStrokeColor="@color/green"
+            app:boxStrokeColor="@color/orange"
             app:hintTextColor="@color/black"
             android:hint="Email"
             android:textColorHint="#999999">
@@ -111,7 +106,7 @@
             android:layout_marginTop="16dp"
             android:hint="Password"
             android:textColorHint="#999999"
-            app:boxStrokeColor="@color/green"
+            app:boxStrokeColor="@color/orange"
             app:hintTextColor="@color/black"
             app:passwordToggleEnabled="true">
 
@@ -133,7 +128,7 @@
             android:layout_marginTop="16dp"
             android:hint="Confirm Password"
             android:textColorHint="#999999"
-            app:boxStrokeColor="@color/green"
+            app:boxStrokeColor="@color/orange"
             app:hintTextColor="@color/black"
             app:passwordToggleEnabled="true">
 
@@ -152,7 +147,8 @@
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/black"
+            app:backgroundTint="@null"
+            android:background="@drawable/sign_up_stroke"
             android:paddingStart="20dp"
             android:paddingTop="15dp"
             android:paddingEnd="20dp"

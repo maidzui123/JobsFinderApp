@@ -29,6 +29,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                finish();
             }
         });
         tvSignIn.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +46,7 @@ public class SignInActivity extends AppCompatActivity {
         });
         String title = "Sign In";
         SpannableString s = new SpannableString(title);
-        s.setSpan(new ForegroundColorSpan(Color.parseColor("#00FF7F")), 5, 7,0);
+        s.setSpan(new ForegroundColorSpan(Color.parseColor("#F15A07")), 5, 7,0);
         tvSignInTitle.setText(s);
     }
 }
