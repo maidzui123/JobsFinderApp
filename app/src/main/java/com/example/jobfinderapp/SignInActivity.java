@@ -1,5 +1,6 @@
 package com.example.jobfinderapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -13,8 +14,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SignInActivity extends AppCompatActivity {
     private TextView tvSignInTitle;
@@ -22,6 +27,7 @@ public class SignInActivity extends AppCompatActivity {
     private TextView tvForgetPass;
     private  TextView tvSignIn;
 
+    private FirebaseAuth firebaseAuth;
     private TextInputLayout tilSignInUsername, tilSignInPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +39,12 @@ public class SignInActivity extends AppCompatActivity {
         tvForgetPass = findViewById(R.id.tvForgetPass);
         tilSignInUsername = findViewById(R.id.tilSignInUsername);
         tilSignInPassword = findViewById(R.id.tilSignInPassword);
-
+        firebaseAuth = FirebaseAuth.getInstance();
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(validateUsername() && validatePassword())
-                {
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    finish();
-                }
-
+                loginUser();
             }
         });
         tvSignIn.setOnClickListener(new View.OnClickListener() {
@@ -86,5 +87,25 @@ public class SignInActivity extends AppCompatActivity {
             return true;
         }
     }
-
+    private void loginUser(){
+        String userName= tilSignInUsername.getEditText().getText().toString().trim();
+        String password = tilSignInPassword.getEditText().getText().toString().trim();
+        if(!validatePassword() | !validateUsername())
+        {
+            return;
+        }
+        firebaseAuth.signInWithEmailAndPassword(userName,password)
+                .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        Toast.makeText(SignInActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(SignInActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
+    }
 }

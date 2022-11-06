@@ -1,5 +1,6 @@
 package com.example.jobfinderapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -11,16 +12,34 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.jobfinderapp.databinding.ActivityMainBinding;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class SignUpActivity extends AppCompatActivity {
     private TextView tvSignUpTitle;
     private Button btnSignUp;
     private TextView tvSignUp;
 
+    private FirebaseAuth mAuth;
+    private ProgressBar progressBar;
+
+    private FirebaseFirestore firebaseFirestore;
+
     private TextInputLayout tilSignUpUsername, tilSignupPassword, tilSignUpEmail, tilSignUpConfirmPassword;
+    private TextInputEditText edtSignUpUsername, edtSignUpEmail, edtSignUpPassword, edtSignUpConfirmPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,12 +53,43 @@ public class SignUpActivity extends AppCompatActivity {
         tilSignupPassword = findViewById(R.id.tilSignUpPassword);
         tilSignUpConfirmPassword = findViewById(R.id.tilSignUpConfirmPassword);
 
+        edtSignUpUsername= findViewById(R.id.edtSignUpUsername);
+        edtSignUpEmail = findViewById(R.id.edtSignUpEmail);
+        edtSignUpPassword = findViewById(R.id.edtSignUpPassword);
+        edtSignUpConfirmPassword = findViewById(R.id.edtSignUpConfirmPassword);
+        mAuth = FirebaseAuth.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
+        progressBar = findViewById(R.id.progressBar);
+
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (validateUsername() && validatePassword() && validateEmail() && validateConfirmPassword()) {
-                    startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                String email= edtSignUpEmail.getText().toString();
+                String userName= edtSignUpUsername.getText().toString();
+                String password = edtSignUpPassword.getText().toString();
+                if(!validatePassword() | !validateEmail() | !validateUsername() | !validateConfirmPassword())
+                {
+                    return;
                 }
+                progressBar.setVisibility(View.VISIBLE);
+                mAuth.createUserWithEmailAndPassword(email,password)
+                        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                            @Override
+                            public void onSuccess(AuthResult authResult) {
+                                startActivity(new Intent(getApplicationContext(),SignInActivity.class));
+                                progressBar.setVisibility(View.GONE);
+                                firebaseFirestore.collection("User")
+                                        .document(FirebaseAuth.getInstance().getUid())
+                                        .set(new User(email,userName));
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                            }
+                        });
             }
         });
         tvSignUp.setOnClickListener(new View.OnClickListener() {
@@ -127,5 +177,7 @@ public class SignUpActivity extends AppCompatActivity {
             return true;
         }
     }
+
+
 
 }
