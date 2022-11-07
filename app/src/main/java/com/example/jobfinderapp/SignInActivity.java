@@ -11,6 +11,7 @@ import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ public class SignInActivity extends AppCompatActivity {
     private  TextView tvSignIn;
 
     private FirebaseAuth firebaseAuth;
-    private TextInputLayout tilSignInUsername, tilSignInPassword;
+    private EditText edtSignInEmail, edtSignInPassword;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,8 +38,8 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btnSignIn);
         tvSignIn = findViewById(R.id.tvSignIn);
         tvForgetPass = findViewById(R.id.tvForgetPass);
-        tilSignInUsername = findViewById(R.id.tilSignInUsername);
-        tilSignInPassword = findViewById(R.id.tilSignInPassword);
+        edtSignInEmail = findViewById(R.id.edtSignInEmail);
+        edtSignInPassword = findViewById(R.id.edtSignInPassword);
         firebaseAuth = FirebaseAuth.getInstance();
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
@@ -65,31 +66,29 @@ public class SignInActivity extends AppCompatActivity {
         tvSignInTitle.setText(s);
     }
     private Boolean validateUsername() {
-        String val = tilSignInUsername.getEditText().getText().toString();
+        String val = edtSignInEmail.getText().toString().trim();
         if (val.isEmpty()) {
-            tilSignInUsername.setError("Username can't be empty!");
+            edtSignInEmail.setError("Username can't be empty!");
             return false;
         } else {
-            tilSignInUsername.setError(null);
-            tilSignInUsername.setErrorEnabled(false);
+            edtSignInEmail.setError(null);
             return true;
         }
 
     }
     private Boolean validatePassword() {
-        String val = tilSignInPassword.getEditText().getText().toString();
+            String val = edtSignInPassword.getText().toString();
         if (val.isEmpty()) {
-            tilSignInPassword.setError("Password can't be empty!");
+            edtSignInPassword.setError("Password can't be empty!");
             return false;
         } else {
-            tilSignInPassword.setError(null);
-            tilSignInPassword.setErrorEnabled(false);
+            edtSignInPassword.setError(null);
             return true;
         }
     }
     private void loginUser(){
-        String userName= tilSignInUsername.getEditText().getText().toString().trim();
-        String password = tilSignInPassword.getEditText().getText().toString().trim();
+        String userName= edtSignInEmail.getText().toString().trim();
+        String password = edtSignInPassword.getText().toString().trim();
         if(!validatePassword() | !validateUsername())
         {
             return;
@@ -98,13 +97,14 @@ public class SignInActivity extends AppCompatActivity {
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
-                        Toast.makeText(SignInActivity.this,"Login Successful",Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                        Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(SignInActivity.this,e.getMessage(),Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                     }
                 });
     }

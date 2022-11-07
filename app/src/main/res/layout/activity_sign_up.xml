@@ -57,95 +57,133 @@
             android:textSize="16sp"
             android:layout_gravity="center"
             android:textFontWeight="400"/>
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/tilSignUpUsername"
+        <EditText
+            android:id="@+id/edtSignUpEmail"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:padding="10dp"
             android:layout_marginTop="16dp"
-            android:hint="Username"
-            app:boxStrokeColor="@color/orange"
-            app:hintTextColor="@color/black"
-            android:textColorHint="#999999">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtSignUpUsername"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:singleLine="true"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/tilSignUpEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:boxStrokeColor="@color/orange"
-            app:hintTextColor="@color/black"
+            android:background="@drawable/edit_text_input"
             android:hint="Email"
-            android:textColorHint="#999999">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtSignUpEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/tilSignUpPassword"
+            />
+        <EditText
+            android:id="@+id/edtSignUpUsername"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_input"
+            android:hint="Username"
+            />
+        <EditText
+            android:id="@+id/edtSignUpPassword"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:padding="10dp"
             android:layout_marginTop="16dp"
+            android:background="@drawable/edit_text_input"
             android:hint="Password"
-            android:textColorHint="#999999"
-            app:boxStrokeColor="@color/orange"
-            app:hintTextColor="@color/black"
-            app:passwordToggleEnabled="true">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtSignUpPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/tilSignUpConfirmPassword"
+            android:inputType="textPassword"
+            />
+        <EditText
+            android:id="@+id/edtSignUpConfirmPassword"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_input"
             android:hint="Confirm Password"
-            android:textColorHint="#999999"
-            app:boxStrokeColor="@color/orange"
-            app:hintTextColor="@color/black"
-            app:passwordToggleEnabled="true">
+            android:inputType="textPassword"
+            />
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:id="@+id/tilSignUpUsername"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:hint="Username"-->
+<!--            app:boxStrokeColor="@color/orange"-->
+<!--            app:hintTextColor="@color/black"-->
+<!--            android:textColorHint="#999999">-->
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edtSignUpConfirmPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:fontFamily="sans-serif-light"
-                android:textColor="@color/black" />
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/edtSignUpUsername"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="text"-->
+<!--                android:singleLine="true"-->
+<!--                android:fontFamily="sans-serif-light"-->
+<!--                android:textColor="@color/black" />-->
 
-        </com.google.android.material.textfield.TextInputLayout>
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:id="@+id/tilSignUpEmail"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            app:boxStrokeColor="@color/orange"-->
+<!--            app:hintTextColor="@color/black"-->
+<!--            android:hint="Email"-->
+<!--            android:textColorHint="#999999">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/edtSignUpEmail"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="textEmailAddress"-->
+<!--                android:singleLine="true"-->
+<!--                android:fontFamily="sans-serif-light"-->
+<!--                android:textColor="@color/black" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:id="@+id/tilSignUpPassword"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:hint="Password"-->
+<!--            android:textColorHint="#999999"-->
+<!--            app:boxStrokeColor="@color/orange"-->
+<!--            app:hintTextColor="@color/black"-->
+<!--            app:passwordToggleEnabled="true">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/edtSignUpPassword"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:singleLine="true"-->
+<!--                android:fontFamily="sans-serif-light"-->
+<!--                android:textColor="@color/black" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
+<!--            android:id="@+id/tilSignUpConfirmPassword"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:hint="Confirm Password"-->
+<!--            android:textColorHint="#999999"-->
+<!--            app:boxStrokeColor="@color/orange"-->
+<!--            app:hintTextColor="@color/black"-->
+<!--            app:passwordToggleEnabled="true">-->
+
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:id="@+id/edtSignUpConfirmPassword"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:inputType="textPassword"-->
+<!--                android:singleLine="true"-->
+<!--                android:fontFamily="sans-serif-light"-->
+<!--                android:textColor="@color/black" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <Button
             android:id="@+id/btnSignUp"
