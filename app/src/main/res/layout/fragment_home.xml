@@ -3,15 +3,146 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_white"
     tools:context=".HomeFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Home"
-        android:textSize="30dp"
-        android:textColor="@color/black"
-        android:textStyle="bold"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rlHomeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/small_button_stroke"
+                android:layout_marginStart="10dp"
+                android:src="@drawable/ic_bell" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="35dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/noti_bg"
+                android:paddingLeft="6dp"
+                android:text="0"
+                android:textColor="@color/white" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:background="@drawable/on_boarding_stroke"
+                android:fontFamily="casual"
+                android:padding="5dp"
+                android:text="JØbsFinder"
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/small_button_stroke"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/icon_search" />
+        </RelativeLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rlHomeHeader"
+            android:paddingLeft="20dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageButton
+                    android:id="@+id/ibHomeFilter"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/small_button_stroke"
+                    android:src="@drawable/ic_filter" />
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none"
+                    android:layout_toRightOf="@+id/ibHomeFilter">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="5dp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:gravity="center_vertical"
+                            android:text="Programmer"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/layout_stroke"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:gravity="center_vertical"
+                            android:text="Programmer"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/layout_stroke"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:gravity="center_vertical"
+                            android:text="Programmer"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/layout_stroke"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-light"
+                            android:gravity="center_vertical"
+                            android:text="Programmer"
+                            android:textColor="@color/black"
+                            android:textSize="18dp"
+                            android:padding="10dp"
+                            android:layout_margin="10dp"
+                            android:background="@drawable/layout_stroke"/>
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </RelativeLayout>
+
+
+        </ScrollView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Home"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
 
 </FrameLayout>
