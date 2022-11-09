@@ -29,7 +29,10 @@ public class SignInActivity extends AppCompatActivity {
     private  TextView tvSignIn;
 
     private FirebaseAuth firebaseAuth;
-    private EditText edtSignInEmail, edtSignInPassword;
+
+    private TextInputLayout tilSignInEmail, tilSignInPassword;
+    private CustomProgressDialog customProgressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +41,13 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btnSignIn);
         tvSignIn = findViewById(R.id.tvSignIn);
         tvForgetPass = findViewById(R.id.tvForgetPass);
-        edtSignInEmail = findViewById(R.id.edtSignInEmail);
-        edtSignInPassword = findViewById(R.id.edtSignInPassword);
+
+        tilSignInEmail = findViewById(R.id.tilSignInEmail);
+        tilSignInPassword = findViewById(R.id.tilSignInPassword);
+
         firebaseAuth = FirebaseAuth.getInstance();
+
+        customProgressDialog = new CustomProgressDialog(SignInActivity.this);
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,46 +72,49 @@ public class SignInActivity extends AppCompatActivity {
         s.setSpan(new ForegroundColorSpan(Color.parseColor("#F15A07")), 5, 7,0);
         tvSignInTitle.setText(s);
     }
-    private Boolean validateUsername() {
-        String val = edtSignInEmail.getText().toString().trim();
+    private Boolean validateEmail() {
+        String val = tilSignInEmail.getEditText().getText().toString().trim();
         if (val.isEmpty()) {
-            edtSignInEmail.setError("Username can't be empty!");
+            tilSignInEmail.setError("Username can't be empty!");
             return false;
         } else {
-            edtSignInEmail.setError(null);
+            tilSignInEmail.setError(null);
             return true;
         }
 
     }
     private Boolean validatePassword() {
-            String val = edtSignInPassword.getText().toString();
+            String val = tilSignInPassword.getEditText().getText().toString();
         if (val.isEmpty()) {
-            edtSignInPassword.setError("Password can't be empty!");
+            tilSignInPassword.setError("Password can't be empty!");
             return false;
         } else {
-            edtSignInPassword.setError(null);
+            tilSignInPassword.setError(null);
             return true;
         }
     }
     private void loginUser(){
-        String userName= edtSignInEmail.getText().toString().trim();
-        String password = edtSignInPassword.getText().toString().trim();
-        if(!validatePassword() | !validateUsername())
+        String userName= tilSignInEmail.getEditText().getText().toString().trim();
+        String password = tilSignInPassword.getEditText().getText().toString().trim();
+        if(!validatePassword() | !validateEmail())
         {
             return;
         }
+        customProgressDialog.show();
         firebaseAuth.signInWithEmailAndPassword(userName,password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
                     public void onSuccess(AuthResult authResult) {
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
+                        customProgressDialog.cancel();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                        customProgressDialog.cancel();
                     }
                 });
     }

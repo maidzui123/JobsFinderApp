@@ -3,6 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/edit_text_input.xml" value="0.2125" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/on_boarding_stroke.xml" value="0.2125" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/progress_bg.xml" value="0.2125" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/round_bottom_corner.xml" value="0.2125" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/sign_up_stroke.xml" value="0.2125" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_sign_up.xml" value="0.3509259259259259" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/loading_layout.xml" value="0.33" />
         <entry key="..\:/JobFinderApp/app/src/main/res/drawable/bg_circle_grey.xml" value="0.2125" />
         <entry key="..\:/JobFinderApp/app/src/main/res/drawable/btn_on_boarding.xml" value="0.2125" />
         <entry key="..\:/JobFinderApp/app/src/main/res/drawable/btn_on_boarding_small.xml" value="0.2125" />

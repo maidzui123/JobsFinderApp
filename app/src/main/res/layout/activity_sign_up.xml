@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,133 +58,96 @@
             android:textSize="16sp"
             android:layout_gravity="center"
             android:textFontWeight="400"/>
-        <EditText
-            android:id="@+id/edtSignUpEmail"
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/tilSignUpUsername"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="10dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/edit_text_input"
-            android:hint="Email"
-            />
-        <EditText
-            android:id="@+id/edtSignUpUsername"
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_input"
             android:hint="Username"
-            />
-        <EditText
-            android:id="@+id/edtSignUpPassword"
+            app:boxStrokeColor="@color/orange"
+            app:hintTextColor="@color/black"
+            android:textColorHint="#999999">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSignUpUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/tilSignUpEmail"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="10dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:background="@drawable/edit_text_input"
-            android:hint="Password"
-            android:inputType="textPassword"
-            />
-        <EditText
-            android:id="@+id/edtSignUpConfirmPassword"
+            app:boxStrokeColor="@color/orange"
+            app:hintTextColor="@color/black"
+            android:hint="Email"
+            android:textColorHint="#999999">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSignUpEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/tilSignUpPassword"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:padding="10dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/edit_text_input"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:hint="Password"
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/orange"
+            app:hintTextColor="@color/black"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSignUpPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/tilSignUpConfirmPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:hint="Confirm Password"
-            android:inputType="textPassword"
-            />
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--            android:id="@+id/tilSignUpUsername"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:hint="Username"-->
-<!--            app:boxStrokeColor="@color/orange"-->
-<!--            app:hintTextColor="@color/black"-->
-<!--            android:textColorHint="#999999">-->
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/orange"
+            app:hintTextColor="@color/black"
+            app:passwordToggleEnabled="true">
 
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/edtSignUpUsername"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:inputType="text"-->
-<!--                android:singleLine="true"-->
-<!--                android:fontFamily="sans-serif-light"-->
-<!--                android:textColor="@color/black" />-->
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSignUpConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:fontFamily="sans-serif-light"
+                android:textColor="@color/black" />
 
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--            android:id="@+id/tilSignUpEmail"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            app:boxStrokeColor="@color/orange"-->
-<!--            app:hintTextColor="@color/black"-->
-<!--            android:hint="Email"-->
-<!--            android:textColorHint="#999999">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/edtSignUpEmail"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:inputType="textEmailAddress"-->
-<!--                android:singleLine="true"-->
-<!--                android:fontFamily="sans-serif-light"-->
-<!--                android:textColor="@color/black" />-->
-
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--            android:id="@+id/tilSignUpPassword"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:hint="Password"-->
-<!--            android:textColorHint="#999999"-->
-<!--            app:boxStrokeColor="@color/orange"-->
-<!--            app:hintTextColor="@color/black"-->
-<!--            app:passwordToggleEnabled="true">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/edtSignUpPassword"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:inputType="textPassword"-->
-<!--                android:singleLine="true"-->
-<!--                android:fontFamily="sans-serif-light"-->
-<!--                android:textColor="@color/black" />-->
-
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
-
-<!--        <com.google.android.material.textfield.TextInputLayout-->
-<!--            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"-->
-<!--            android:id="@+id/tilSignUpConfirmPassword"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="16dp"-->
-<!--            android:hint="Confirm Password"-->
-<!--            android:textColorHint="#999999"-->
-<!--            app:boxStrokeColor="@color/orange"-->
-<!--            app:hintTextColor="@color/black"-->
-<!--            app:passwordToggleEnabled="true">-->
-
-<!--            <com.google.android.material.textfield.TextInputEditText-->
-<!--                android:id="@+id/edtSignUpConfirmPassword"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:inputType="textPassword"-->
-<!--                android:singleLine="true"-->
-<!--                android:fontFamily="sans-serif-light"-->
-<!--                android:textColor="@color/black" />-->
-
-<!--        </com.google.android.material.textfield.TextInputLayout>-->
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnSignUp"
@@ -229,13 +193,5 @@
         </LinearLayout>
 
     </LinearLayout>
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_centerInParent="true"
-        android:visibility="gone"
-        tools:ignore="MissingConstraints"/>
 
 </RelativeLayout>
