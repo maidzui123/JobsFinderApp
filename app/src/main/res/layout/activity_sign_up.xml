@@ -41,7 +41,7 @@
             android:id="@+id/tvSignUpTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="18dp"
             android:text="Sign Up"
             android:fontFamily="casual"
             android:textStyle="bold"
@@ -64,7 +64,7 @@
             android:id="@+id/tilSignUpUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:hint="Username"
             app:boxStrokeColor="@color/orange"
             app:hintTextColor="@color/black"
@@ -86,7 +86,7 @@
             android:id="@+id/tilSignUpEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             app:boxStrokeColor="@color/orange"
             app:hintTextColor="@color/black"
             android:hint="Email"
@@ -108,7 +108,7 @@
             android:id="@+id/tilSignUpPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:hint="Password"
             android:textColorHint="#999999"
             app:boxStrokeColor="@color/orange"
@@ -131,7 +131,7 @@
             android:id="@+id/tilSignUpConfirmPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:hint="Confirm Password"
             android:textColorHint="#999999"
             app:boxStrokeColor="@color/orange"
@@ -163,12 +163,12 @@
             android:textSize="18sp"
             android:fontFamily="sans-serif-light"
             app:cornerRadius="10dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginTop="12dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:gravity="center"
             android:orientation="horizontal">
 
