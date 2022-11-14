@@ -64,7 +64,7 @@
             android:id="@+id/tilSignInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:hint="Email"
             android:textColorHint="#999999"
             app:boxStrokeColor="@color/orange"
@@ -86,7 +86,7 @@
             android:id="@+id/tilSignInPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:hint="Password"
             android:textColorHint="#999999"
             app:boxStrokeColor="@color/orange"
@@ -110,7 +110,7 @@
             android:text="Forget Password?"
             android:textColor="@color/blue"
             android:textSize="16sp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_gravity="end"/>
         <Button
             android:id="@+id/btnSignIn"

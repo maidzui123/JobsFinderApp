@@ -79,6 +79,7 @@ public class SignInActivity extends AppCompatActivity {
             return false;
         } else {
             tilSignInEmail.setError(null);
+            tilSignInEmail.setErrorEnabled(false);
             return true;
         }
 
@@ -90,6 +91,7 @@ public class SignInActivity extends AppCompatActivity {
             return false;
         } else {
             tilSignInPassword.setError(null);
+            tilSignInPassword.setErrorEnabled(false);
             return true;
         }
     }

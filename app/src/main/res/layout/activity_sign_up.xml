@@ -34,7 +34,7 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentRight="true"
-                android:src="@drawable/logo_app"/>
+                android:src="@drawable/logo_app" />
         </RelativeLayout>
 
         <TextView
@@ -42,73 +42,74 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="18dp"
-            android:text="Sign Up"
             android:fontFamily="casual"
-            android:textStyle="bold"
-            android:textAlignment="center"
             android:gravity="center"
+            android:text="Sign Up"
+            android:textAlignment="center"
             android:textColor="@color/black"
-            android:textSize="50sp" />
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="sans-serif-light"
             android:text="Please fill the details and create account"
             android:textColor="#999999"
-            android:fontFamily="sans-serif-light"
-            android:textSize="16sp"
-            android:layout_gravity="center"
-            android:textFontWeight="400"/>
+            android:textFontWeight="400"
+            android:textSize="16sp" />
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/tilSignUpUsername"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:hint="Username"
+            android:textColorHint="#999999"
             app:boxStrokeColor="@color/orange"
-            app:hintTextColor="@color/black"
-            android:textColorHint="#999999">
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtSignUpUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
                 android:inputType="text"
                 android:singleLine="true"
-                android:fontFamily="sans-serif-light"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/tilSignUpEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            app:boxStrokeColor="@color/orange"
-            app:hintTextColor="@color/black"
+            android:layout_marginTop="5dp"
             android:hint="Email"
-            android:textColorHint="#999999">
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/orange"
+            app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtSignUpEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
-                android:fontFamily="sans-serif-light"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/tilSignUpPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:hint="Password"
             android:textColorHint="#999999"
             app:boxStrokeColor="@color/orange"
@@ -119,19 +120,19 @@
                 android:id="@+id/edtSignUpPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
                 android:inputType="textPassword"
                 android:singleLine="true"
-                android:fontFamily="sans-serif-light"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:id="@+id/tilSignUpConfirmPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="5dp"
             android:hint="Confirm Password"
             android:textColorHint="#999999"
             app:boxStrokeColor="@color/orange"
@@ -142,9 +143,9 @@
                 android:id="@+id/edtSignUpConfirmPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
                 android:inputType="textPassword"
                 android:singleLine="true"
-                android:fontFamily="sans-serif-light"
                 android:textColor="@color/black" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -153,17 +154,17 @@
             android:id="@+id/btnSignUp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:backgroundTint="@null"
+            android:layout_marginTop="12dp"
             android:background="@drawable/sign_up_stroke"
+            android:fontFamily="sans-serif-light"
             android:paddingStart="20dp"
             android:paddingTop="15dp"
             android:paddingEnd="20dp"
             android:paddingBottom="15dp"
             android:text="Sign Up"
             android:textSize="18sp"
-            android:fontFamily="sans-serif-light"
-            app:cornerRadius="10dp"
-            android:layout_marginTop="12dp"/>
+            app:backgroundTint="@null"
+            app:cornerRadius="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -186,8 +187,8 @@
                 android:layout_marginStart="10dp"
                 android:text="Sign In"
                 android:textColor="@color/blue"
-                android:textStyle="bold"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>

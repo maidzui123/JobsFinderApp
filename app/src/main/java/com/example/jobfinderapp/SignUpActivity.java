@@ -85,6 +85,7 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         } else {
             tilSignUpUsername.setError(null);
+            tilSignUpUsername.setErrorEnabled(false);
             return true;
         }
     }
@@ -99,6 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         } else {
             tilSignUpEmail.setError(null);
+            tilSignUpEmail.setErrorEnabled(false);
             return true;
         }
     }
@@ -121,6 +123,7 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         } else {
             tilSignUpPassword.setError(null);
+            tilSignUpPassword.setErrorEnabled(false);
             return true;
         }
     }
@@ -135,6 +138,7 @@ public class SignUpActivity extends AppCompatActivity {
             return false;
         } else {
             tilSignUpConfirmPassword.setError(null);
+            tilSignUpConfirmPassword.setErrorEnabled(false);
             return true;
         }
     }

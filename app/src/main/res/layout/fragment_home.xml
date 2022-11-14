@@ -56,86 +56,83 @@
                 android:background="@drawable/small_button_stroke"
                 android:src="@drawable/icon_search" />
         </RelativeLayout>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/rlHomeHeader"
-            android:paddingLeft="20dp"
-            >
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <ImageButton
-                    android:id="@+id/ibHomeFilter"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerInParent="true"
-                    android:layout_marginEnd="15dp"
-                    android:background="@drawable/small_button_stroke"
-                    android:src="@drawable/ic_filter" />
-
-                <HorizontalScrollView
-                    android:layout_width="wrap_content"
+            android:paddingLeft="20dp">
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:scrollbars="none">
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_toRightOf="@+id/ibHomeFilter"
-                    android:scrollbars="none">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                    android:orientation="horizontal">
+                    <ImageButton
+                        android:id="@+id/ibHomeFilter"
+                        android:layout_width="50dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="15dp"
+                        android:background="@drawable/small_button_stroke"
+                        android:src="@drawable/ic_filter" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/small_selection_bg"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Programming"
+                        android:textColor="@color/white"
+                        android:textSize="18dp"
+                        android:textStyle="bold"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/small_sub_selection_bg"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Marketing"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold"/>
 
-                            android:background="@drawable/layout_stroke"
-                            android:fontFamily="sans-serif-light"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            android:text="Programmer"
-                            android:textColor="@color/black"
-                            android:textSize="18dp"
-                            android:layout_marginEnd="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/small_sub_selection_bg"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Design"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold"/>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/layout_stroke"
-                            android:fontFamily="sans-serif-light"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            android:text="Programmer"
-                            android:textColor="@color/black"
-                            android:textSize="18dp"
-                            android:layout_marginEnd="10dp"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:background="@drawable/small_sub_selection_bg"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="center_vertical"
+                        android:padding="10dp"
+                        android:text="Healthcare"
+                        android:textColor="@color/black"
+                        android:textSize="18dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </HorizontalScrollView>
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/layout_stroke"
-                            android:fontFamily="sans-serif-light"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            android:text="Programmer"
-                            android:textColor="@color/black"
-                            android:textSize="18dp"
-                            android:layout_marginEnd="10dp"/>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/layout_stroke"
-                            android:fontFamily="sans-serif-light"
-                            android:gravity="center_vertical"
-                            android:padding="10dp"
-                            android:text="Programmer"
-                            android:textColor="@color/black"
-                            android:textSize="18dp"
-                            android:layout_marginEnd="10dp"/>
-                    </LinearLayout>
-                </HorizontalScrollView>
-            </RelativeLayout>
 
 
         </ScrollView>
