@@ -2,4 +2,11 @@
     <string name="app_name">JobsFinder</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="jobs">
+        <item>Programming</item>
+        <item>Marketing</item>
+        <item>Design</item>
+        <item>Healthcare</item>
+    </string-array>
 </resources>
