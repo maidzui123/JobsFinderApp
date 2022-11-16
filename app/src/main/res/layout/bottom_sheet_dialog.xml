@@ -53,19 +53,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
+            android:hint="Select jobs"
             >
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTxt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
                 android:inputType="none"
-                android:text="Programming"/>
+                />
         </com.google.android.material.textfield.TextInputLayout>
-        <fragment
-            android:layout_height="match_parent"
-            android:layout_width="350px"
-            class=""
-            android:id="@+id/fragment"/>
+
     </LinearLayout>
 </LinearLayout>
