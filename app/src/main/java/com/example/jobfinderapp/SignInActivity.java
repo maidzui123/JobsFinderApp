@@ -110,6 +110,7 @@ public class SignInActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         Toast.makeText(getApplicationContext(),"Login Successful",Toast.LENGTH_SHORT).show();
                         customProgressDialog.cancel();
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {

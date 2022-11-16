@@ -128,7 +128,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
     private Boolean validateConfirmPassword() {
-        String val1 = tilSignUpConfirmPassword.getEditText().getText().toString();
+        String val1 = tilSignUpPassword.getEditText().getText().toString();
         String val2 = tilSignUpConfirmPassword.getEditText().getText().toString();
         if (val2.isEmpty()) {
             tilSignUpConfirmPassword.setError("Confirm Password can't be empty!");
@@ -143,17 +143,13 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
     private void registerUser() {
-        if(!validateUsername() |!validatePassword() | !validateEmail() | !validateUsername())
+        if(!validateUsername() |!validatePassword() | !validateEmail() | !validateUsername() | !validateConfirmPassword())
         {
             return;
         }
         String email= tilSignUpEmail.getEditText().getText().toString();
         String userName= tilSignUpUsername.getEditText().getText().toString();
         String password = tilSignUpPassword.getEditText().getText().toString();
-        if(!validatePassword() | !validateEmail() | !validateUsername() | !validateConfirmPassword())
-        {
-            return;
-        }
         customProgressDialog.show();
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -163,8 +159,9 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Sign Up Successful",Toast.LENGTH_SHORT).show();
                         firebaseFirestore.collection("User")
                                 .document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
-                                .set(new User(email, userName));
+                                .set(new User(email, userName, password));
                         customProgressDialog.cancel();
+                        finish();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
