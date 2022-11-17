@@ -4,33 +4,32 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class BottomSheet extends BottomSheetDialogFragment {
+public class BottomSheet extends Fragment {
     String[] job_items = {"Programming", "Marketing", "Design", "Healthcare"};
     AutoCompleteTextView autoCompleteTxt;
+    ArrayAdapter<String> adapterItems;
     private View mView;
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-         mView = inflater.inflate(R.layout.bottom_sheet_dialog,container, false);
-         autoCompleteTxt = mView.findViewById(R.id.autoCompleteTxt);
-         ArrayAdapter<String> adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.job_dropdown_item, job_items);
-         autoCompleteTxt.setAdapter(adapterItems);
-         autoCompleteTxt.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String item = parent.getItemAtPosition(position).toString();
-                Toast.makeText(getActivity(), "Item: " + item, Toast.LENGTH_SHORT).show();
-            }
-         });
-         return mView;
+    public BottomSheet() {
+        // Required empty public constructor
     }
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        mView = inflater.inflate(R.layout.bottom_sheet_dialog, container, false);
+        autoCompleteTxt = mView.findViewById(R.id.autoCompleteTxt);
+        adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.job_dropdown_item, job_items);
+        autoCompleteTxt.setAdapter(adapterItems);
+
+        return mView;
+    }
+
+
 }

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lnBottomSheetContainer"
     android:layout_width="match_parent"
     android:layout_height="500dp"
     android:background="@drawable/bottom_dialog_bg"
@@ -18,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="Filter"
             android:textStyle="bold"
-            android:textSize="24sp"
+            android:textSize="30sp"
             android:textColor="@color/black"
             android:fontFamily="sans-serif-light"
             android:layout_weight="1"
@@ -46,22 +48,86 @@
             android:textSize="24sp"
             android:textColor="@color/black"
             android:fontFamily="sans-serif-light"
-            android:layout_weight="1"
             />
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:hint="Select jobs"
             >
             <AutoCompleteTextView
                 android:id="@+id/autoCompleteTxt"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="none"
+                android:text="Programming"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Job Type"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            >
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTxt1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                android:text="Full-time"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textStyle="bold"
+            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+
+            >
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteTxt2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="none"
+                android:text="Ho Chi Minh"
+
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </LinearLayout>
+
 </LinearLayout>
