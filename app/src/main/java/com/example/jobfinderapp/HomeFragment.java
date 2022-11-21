@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,35 +29,30 @@ public class HomeFragment extends Fragment {
     }
     private ImageButton ibHomeFilter;
     private View mView;
-    private LinearLayout lnBottomSheetContainer;
-
-    String[] job_items = {"Programming", "Marketing", "Design", "Healthcare"};
-    AutoCompleteTextView autoCompleteTxt;
-    ArrayAdapter<String> adapterItems;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_home, container, false);
         ibHomeFilter = mView.findViewById(R.id.ibHomeFilter);
-        lnBottomSheetContainer = mView.findViewById(R.id.lnBottomSheetContainer);
-        autoCompleteTxt = mView.findViewById(R.id.autoCompleteTxt);
-        adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.job_dropdown_item, job_items);
-        autoCompleteTxt.setAdapter(adapterItems);
         ibHomeFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(getActivity(), R.style.BottomSheetDialogTheme);
-                View bottomSheetView = LayoutInflater.from(getContext()).inflate(R.layout.bottom_sheet_dialog, lnBottomSheetContainer);
-                bottomSheetDialog.setContentView(bottomSheetView);
-                bottomSheetDialog.show();
+                replaceFragment(new BottomFragment());
             }
         });
         return mView;
     }
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.flHomeFragment, fragment);
+        fragmentTransaction.commit();
+    }
+
 //    private void showDialog() {
-//        final Dialog dialog = new Dialog(getActivity());
+//        final BottomSheetDialog dialog = new BottomSheetDialog(getActivity());
 //        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setContentView(R.layout.bottom_sheet_dialog);
+//        dialog.setContentView(R.layout.frame_bottom_sheet_dialog);
 //        dialog.show();
 //        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
 //        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

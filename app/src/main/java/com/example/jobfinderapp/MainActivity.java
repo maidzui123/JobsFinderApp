@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.jobfinderapp.databinding.ActivityMainBinding;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.frame_layout, fragment);
         fragmentTransaction.commit();
     }
-
 }
 
 //    Fragment fragment = null;
