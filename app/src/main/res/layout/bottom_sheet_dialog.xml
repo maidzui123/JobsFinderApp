@@ -4,32 +4,32 @@
     android:id="@+id/flBottomFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/light_white"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".BottomFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:background="@drawable/bottom_dialog_bg"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_remove_24"/>
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:padding="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Filter"
+
+            <Button
+                android:id="@+id/btnCloseFilter"
+                android:layout_width="70dp"
+                android:layout_height="33dp"
+                android:background="@drawable/small_button_stroke"
+                android:text="Close"
+                android:paddingTop="2dp"
+                android:textColor="#DDDDDD"
+                android:textSize="12dp"
                 android:textStyle="bold"
-                android:textSize="30sp"
-                android:textColor="@color/black"
-                android:fontFamily="sans-serif-light"
-                android:layout_weight="1"
-                />
+                android:textAllCaps="false"
+                app:backgroundTint="@null" />
             <TextView
                 android:id="@+id/tvResetFilter"
                 android:layout_width="wrap_content"
@@ -38,9 +38,19 @@
                 android:textSize="18sp"
                 android:textColor="@color/orange"
                 android:fontFamily="sans-serif-light"
-                android:textStyle="bold"/>
-
-        </LinearLayout>
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Filter"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:textColor="@color/black"
+            android:fontFamily="sans-serif-light"
+            android:layout_gravity="center" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,24 +63,20 @@
                 android:textStyle="bold"
                 android:textSize="24sp"
                 android:textColor="@color/black"
-                android:fontFamily="sans-serif-light"
-                />
+                android:fontFamily="sans-serif-light" />
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                >
+                android:layout_marginTop="5dp">
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTxt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="none"
                     android:text="  Programming"
-                    android:drawableStart="@drawable/ic_categories"
-                    />
+                    android:drawableStart="@drawable/ic_categories" />
             </com.google.android.material.textfield.TextInputLayout>
-
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,22 +90,19 @@
                 android:textStyle="bold"
                 android:textSize="24sp"
                 android:textColor="@color/black"
-                android:fontFamily="sans-serif-light"
-                />
+                android:fontFamily="sans-serif-light" />
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                >
+                android:layout_marginTop="5dp">
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTxt1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="none"
                     android:text="  Full-time"
-                    android:drawableStart="@drawable/ic_clock"
-                    />
+                    android:drawableStart="@drawable/ic_clock" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
@@ -115,23 +118,19 @@
                 android:textStyle="bold"
                 android:textSize="24sp"
                 android:textColor="@color/black"
-                android:fontFamily="sans-serif-light"
-                />
+                android:fontFamily="sans-serif-light" />
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-
-                >
+                android:layout_marginTop="5dp">
                 <AutoCompleteTextView
                     android:id="@+id/autoCompleteTxt2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:inputType="none"
                     android:text="  Ho Chi Minh"
-                    android:drawableStart="@drawable/ic_location"
-                    />
+                    android:drawableStart="@drawable/ic_location" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

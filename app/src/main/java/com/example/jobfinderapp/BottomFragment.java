@@ -28,7 +28,7 @@ public class BottomFragment extends Fragment {
     AutoCompleteTextView autoCompleteTxt, autoCompleteTxt1, autoCompleteTxt2;
     ArrayAdapter<String> adapterItems, adapterItems1, adapterItems2;
     private View mView;
-    private Button btnSaveFilter;
+    private Button btnSaveFilter,btnCloseFilter;
     private TextView tvResetFilter;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +38,7 @@ public class BottomFragment extends Fragment {
         autoCompleteTxt1 = mView.findViewById(R.id.autoCompleteTxt1);
         autoCompleteTxt2 = mView.findViewById(R.id.autoCompleteTxt2);
         btnSaveFilter = mView.findViewById(R.id.btnSaveFilter);
+        btnCloseFilter = mView.findViewById(R.id.btnCloseFilter);
         tvResetFilter = mView.findViewById(R.id.tvResetFilter);
         adapterItems = new ArrayAdapter<String>(getActivity(), R.layout.job_dropdown_item, job_items);
         adapterItems1 = new ArrayAdapter<String>(getActivity(), R.layout.job_dropdown_item, job_time);
@@ -54,6 +55,12 @@ public class BottomFragment extends Fragment {
             }
         });
         btnSaveFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                replaceFragment(new HomeFragment());
+            }
+        });
+        btnCloseFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 replaceFragment(new HomeFragment());

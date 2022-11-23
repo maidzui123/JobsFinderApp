@@ -135,8 +135,6 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
-
-
         </ScrollView>
 
         <FrameLayout

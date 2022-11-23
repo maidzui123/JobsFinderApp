@@ -3,23 +3,43 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/avatar_bg.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/bg_circle_grey.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/big_button_stroke.xml" value="0.1425" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/edit_text_input.xml" value="0.2125" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/hor_progress_bg.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_arrow_right.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_feedback.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_home.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_nearby.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_picture.xml" value="0.3095" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_profile.xml" value="0.3095" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_rate.xml" value="0.3095" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_setting.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/ic_settings.xml" value="0.1425" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/icon_search.xml" value="0.2125" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/item_selector.xml" value="0.2125" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/on_boarding_stroke.xml" value="0.2125" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/progress_bg.xml" value="0.2125" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/round_bottom_corner.xml" value="0.2125" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/sign_up_stroke.xml" value="0.2125" />
-        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/small_button_stroke.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/drawable/small_selection_bg.xml" value="0.1425" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_on_boarding.xml" value="0.3509259259259259" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_reset_password.xml" value="0.33" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_sign_in.xml" value="0.25" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_sign_up.xml" value="0.3509259259259259" />
-        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.22" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/activity_splash.xml" value="0.38697916666666665" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.25" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/fragment_account.xml" value="0.33" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/fragment_nearby.xml" value="0.38697916666666665" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/fragment_on_boarding1.xml" value="0.38697916666666665" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/fragment_on_boarding3.xml" value="0.38697916666666665" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/job_dropdown_item.xml" value="0.28055555555555556" />
         <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/layout/loading_layout.xml" value="0.33" />
+        <entry key="..\:/Github HorrorHouse/JobsFinderApp/app/src/main/res/menu/item_menu.xml" value="0.38697916666666665" />
         <entry key="..\:/JobFinderApp/app/src/main/res/drawable/bg_circle_grey.xml" value="0.2125" />
         <entry key="..\:/JobFinderApp/app/src/main/res/drawable/btn_on_boarding.xml" value="0.2125" />
         <entry key="..\:/JobFinderApp/app/src/main/res/drawable/btn_on_boarding_small.xml" value="0.2125" />
