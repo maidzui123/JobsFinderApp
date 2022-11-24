@@ -10,11 +10,13 @@
     <ScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
         android:scrollbars="none">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="20dp"
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -33,6 +35,7 @@
                     android:textStyle="bold" />
 
                 <ImageButton
+                    android:id="@+id/ibAccountPopUp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_alignParentEnd="true"
@@ -47,11 +50,11 @@
                 android:layout_gravity="center"
                 >
                 <ImageView
+                    android:id="@+id/ivProfileAvatar"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
-                    android:paddingTop="100dp"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ava_test" />
+                    android:src="@drawable/default_avatar" />
             </androidx.cardview.widget.CardView>
             <TextView
                 android:id="@+id/tvProfileUsername"
@@ -60,6 +63,7 @@
                 android:layout_marginTop="10dp"
                 android:textStyle="bold"
                 android:textSize="28sp"
+                android:text="*Unknown*"
                 android:textColor="@color/black"
                 android:fontFamily="sans-serif-light"
                 android:layout_gravity="center" />
@@ -173,6 +177,7 @@
                             android:fontFamily="sans-serif-light"
                             android:gravity="center"/>
                         <Button
+                            android:id="@+id/btnUploadPhoto"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
@@ -195,12 +200,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/ic_rate"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="10dp"
                             android:layout_gravity="center"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Rate JobsFinder App"
+                            android:text="Rate Our App"
+                            android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"
                             android:textSize="14sp"
@@ -214,6 +220,7 @@
                             android:text="Rate"
                             android:textSize="12dp"
                             android:textStyle="bold"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="sans-serif-light"
                             android:textAllCaps="false"
                             />

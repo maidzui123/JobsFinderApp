@@ -1,16 +1,15 @@
 package com.example.jobfinderapp;
 
 public class User {
-    public String email,userName, passWord;
+    public String email,userName, profilePicture;
 
     public User(){
 
     }
-    public User(String email,String userName, String passWord){
+    public User(String email,String userName, String profilePicture){
         this.email=email;
         this.userName=userName;
-        this.passWord=passWord;
-
+        this.profilePicture=profilePicture;
     }
 
     public String getEmail() {
@@ -29,11 +28,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getProfilePicture() {
+        return profilePicture;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 }
