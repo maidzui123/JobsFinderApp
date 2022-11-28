@@ -46,15 +46,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        firebaseAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
-        userID = firebaseAuth.getCurrentUser().getUid();
-        DocumentReference documentReference = firebaseFirestore.collection("User").document(userID);
-        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
-            @Override
-            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-            }
-        });
+//        firebaseAuth = FirebaseAuth.getInstance();
+//        firebaseFirestore = FirebaseFirestore.getInstance();
+//        userID = firebaseAuth.getCurrentUser().getUid();
+//        DocumentReference documentReference = firebaseFirestore.collection("User").document(userID);
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
+//            }
+//        });
         replaceFragment(new HomeFragment());
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){

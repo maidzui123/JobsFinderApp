@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/big_button_stroke"
+    android:orientation="vertical"
+    android:layout_margin="16dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/bottom_dialog_bg"
+        android:text="Rate Your Star"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:fontFamily="sans-serif-light"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:orientation="vertical">
+        <RatingBar
+            android:id="@+id/rbRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:numStars="5"
+            android:rating="2.5"
+            android:stepSize="1"
+            android:isIndicator="false"
+            android:progressTint="@color/yellow"/>
+        <Button
+            android:id="@+id/btnRateStar"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/btn_on_boarding"
+            android:fontFamily="sans-serif-light"
+            android:layout_gravity="center"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="RATE"
+            android:textSize="18sp"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+</LinearLayout>
