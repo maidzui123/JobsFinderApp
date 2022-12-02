@@ -13,7 +13,7 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:background="@drawable/bottom_dialog_bg"
-        android:text="Rate Your Star"
+        android:text="RATE YOUR STAR"
         android:textStyle="bold"
         android:textSize="16dp"
         android:fontFamily="sans-serif-light"/>
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:numStars="5"
-            android:rating="2.5"
+            android:rating="0"
             android:stepSize="1"
             android:isIndicator="false"
             android:progressTint="@color/yellow"/>

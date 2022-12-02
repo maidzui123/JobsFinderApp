@@ -13,7 +13,7 @@
         android:textColor="@color/black"
         android:gravity="center"
         android:background="@drawable/bottom_dialog_bg"
-        android:text="Send Your Feedback"
+        android:text="SEND YOUR FEEDBACK"
         android:textStyle="bold"
         android:textSize="16dp"
         android:fontFamily="sans-serif-light"/>

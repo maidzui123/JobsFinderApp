@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/big_button_stroke"
+    android:orientation="vertical"
+    android:layout_margin="16dp">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@drawable/bottom_dialog_bg"
+        android:text="SET YOUR PROFILE"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:fontFamily="sans-serif-light"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:scrollbars="none">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter your full name:"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProfileFullName"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Full name"
+                android:textColorHint="#999999"
+                app:boxStrokeColor="@color/orange"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter your birthday:"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProfileBirthday"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Birthday"
+                android:textColorHint="#999999"
+                app:boxStrokeColor="@color/orange"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:inputType="date"
+                    android:singleLine="false"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gender:"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+            <RadioGroup
+                android:id="@+id/rgProfileGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/rbProfileMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:fontFamily="sans-serif-light"
+                    android:textSize="16dp"
+                    android:layout_marginEnd="20dp"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rbProfileFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Female"
+                    android:fontFamily="sans-serif-light"
+                    android:textSize="16dp"
+                    android:layout_marginStart="20dp"
+                    />
+            </RadioGroup>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter your phone number:"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProfilePhoneNumber"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone number"
+                android:textColorHint="#999999"
+                app:boxStrokeColor="@color/orange"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:inputType="number"
+                    android:singleLine="true"
+                    />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter your address:"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProfileAddress"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address"
+                android:textColorHint="#999999"
+                app:boxStrokeColor="@color/orange"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Enter your majors:"
+                android:textColor="@color/black"
+                android:textSize="18dp"/>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilProfileMajors"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Majors"
+                android:textColorHint="#999999"
+                android:layout_marginBottom="10dp"
+                app:boxStrokeColor="@color/orange"
+                app:hintTextColor="@color/black">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-light"
+                    android:inputType="text"
+                    android:singleLine="true" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/btnProfileConfirm"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/btn_on_boarding"
+        android:fontFamily="sans-serif-light"
+        android:layout_gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:text="Confirm"
+        android:textSize="18sp"
+        app:backgroundTint="@null" />
+</LinearLayout>
