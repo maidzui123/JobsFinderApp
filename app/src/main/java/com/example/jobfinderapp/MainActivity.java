@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String userID;
     private String strProfileFullName, strProfileMajors;
-    private String intProgressScore;
+    private double strProgressScore;
     private CustomProgressDialog customProgressDialog;
 
     @Override
@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         firebaseFirestore = FirebaseFirestore.getInstance();
         userID = firebaseAuth.getCurrentUser().getUid();
         getUserInfo(userID);
-//        updateUser(userID);
         replaceFragment(new HomeFragment());
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
             switch (item.getItemId()){
@@ -84,8 +83,8 @@ public class MainActivity extends AppCompatActivity {
     public String getMajors() {
         return strProfileMajors;
     }
-    public String getProgressScore() {
-        return intProgressScore;
+    public double getProgressScore() {
+        return strProgressScore;
     }
 
     private void getUserInfo(String userID) {
@@ -95,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 strProfileFullName = value.getString("fullName");
                 strProfileMajors = value.getString("majors");
-                intProgressScore = value.getString("progressScore");
+                strProgressScore = value.getDouble("progressScore");
             }
         });
     }

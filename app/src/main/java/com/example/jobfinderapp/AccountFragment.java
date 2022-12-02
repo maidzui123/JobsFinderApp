@@ -58,6 +58,7 @@ public class AccountFragment extends Fragment {
         // Required empty public constructor
     }
     private TextView tvProfileUsername, tvSendFeedback, tvProfileMajors;
+    private static TextView tvProgressString;
     private View mView;
     private ImageButton ibAccountPopUp;
     private Button btnUploadPhoto, btnRateYourStar, btnProfileDetail;
@@ -100,18 +101,24 @@ public class AccountFragment extends Fragment {
         btnRateYourStar = mView.findViewById(R.id.btnRateYourStar);
         btnProfileDetail = mView.findViewById(R.id.btnProfileDetail);
         pbProfileProgress = mView.findViewById(R.id.pbProfileProgress);
+        tvProgressString = mView.findViewById(R.id.tvProgressString);
 
         mainActivity = (MainActivity) getActivity();
 
         tvProfileUsername.setText(mainActivity.getUsername());
         tvProfileMajors.setText(mainActivity.getMajors());
-        pbProfileProgress.setProgress(Integer.parseInt(mainActivity.getProgressScore()));
-
+        pbProfileProgress.setProgress((int) mainActivity.getProgressScore());
+        pbProfileProgress.setProgress(progressScore);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         userID = firebaseAuth.getCurrentUser().getUid();
-        updateProgress(userID, progressScore);
-//        ivProfileAvatar.setImageURI(imageUri);
+        if(mainActivity.getProgressScore() != 90)
+        {
+            updateProgress(userID, progressScore);
+
+        }
+        ivProfileAvatar.setImageURI(imageUri);
+
         mTakePhoto = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
             @Override
             public void onActivityResult(Uri result) {
@@ -170,6 +177,18 @@ public class AccountFragment extends Fragment {
                 openDetailsDialog(Gravity.CENTER, userID);
             }
         });
+        if(progressScore == 30)
+        {
+            tvProgressString.setText("(1/3)");
+        }
+        else if (progressScore == 60)
+        {
+            tvProgressString.setText("(2/3)");
+        }
+        else if (progressScore == 90)
+        {
+            tvProgressString.setText("(3/3)");
+        }
         return mView;
 
     }
@@ -254,6 +273,18 @@ public class AccountFragment extends Fragment {
                     progressScore += 30;
                     pbProfileProgress.setProgress(progressScore);
                 }
+                if(progressScore == 30)
+                {
+                    tvProgressString.setText("(1/3)");
+                }
+                else if (progressScore == 60)
+                {
+                    tvProgressString.setText("(2/3)");
+                }
+                else if (progressScore == 90)
+                {
+                    tvProgressString.setText("(3/3)");
+                }
                 dialog.dismiss();
             }
         });
@@ -287,6 +318,18 @@ public class AccountFragment extends Fragment {
         btnProfileConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(progressScore == 30)
+                {
+                    tvProgressString.setText("(1/3)");
+                }
+                else if (progressScore == 60)
+                {
+                    tvProgressString.setText("(2/3)");
+                }
+                else if (progressScore == 90)
+                {
+                    tvProgressString.setText("(3/3)");
+                }
                 String gender;
                 if(rbProfileMale.isChecked())
                 {
@@ -352,6 +395,18 @@ public class AccountFragment extends Fragment {
                         progressScore += 30;
                         pbProfileProgress.setProgress(progressScore);
                     }
+                    if(progressScore == 30)
+                    {
+                        tvProgressString.setText("(1/3)");
+                    }
+                    else if (progressScore == 60)
+                    {
+                        tvProgressString.setText("(2/3)");
+                    }
+                    else if (progressScore == 90)
+                    {
+                        tvProgressString.setText("(3/3)");
+                    }
                     ivProfileAvatar.setImageURI(imageUri);
                     Toast.makeText(getActivity(), "Upload Avatar Success", Toast.LENGTH_SHORT).show();
                     customProgressDialog.cancel();
@@ -370,21 +425,21 @@ public class AccountFragment extends Fragment {
         Map<String, Object> map = new HashMap<>();
         if(progressScore == 0)
         {
-            map.put("progressScore", "0");
+            map.put("progressScore", 0);
             docRef.update(map);
         }
         else if(progressScore == 30)
         {
-            map.put("progressScore", "30");
+            map.put("progressScore", 30);
             docRef.update(map);
         }
         else if(progressScore == 60)
         {
-            map.put("progressScore", "60");
+            map.put("progressScore", 60);
             docRef.update(map);
         }
         else {
-            map.put("progressScore", "90");
+            map.put("progressScore", 90);
             docRef.update(map);
         }
 
