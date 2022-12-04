@@ -130,7 +130,26 @@
             </HorizontalScrollView>
 
         </ScrollView>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="15dp">
+            <TextView
+                android:id="@+id/tvSuggestJob"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Suggested Job"
+                android:textStyle="bold
+"               android:textSize="22dp"
+                android:textColor="@color/black"/>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvSuggestedJob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvSuggestJob"
+                android:layout_marginTop="10dp"/>
+        </RelativeLayout>
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
