@@ -4,11 +4,11 @@ import android.net.Uri;
 
 public class User {
     public String email, userName, fullName, birthDay, gender, phoneNumber, address, majors, profilePicture;
-    public double progressScore;
+    public String progressScore;
     public User(){
 
     }
-    public User(String email, String userName, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String profilePicture, double progressScore){
+    public User(String email, String userName, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String profilePicture, String progressScore){
         this.email = email;
         this.userName = userName;
         this.fullName = fullName;
@@ -93,11 +93,11 @@ public class User {
         this.majors = majors;
     }
 
-    public double getProgressScore() {
+    public String getProgressScore() {
         return progressScore;
     }
 
-    public void setProgressScore(double progressScore) {
+    public void setProgressScore(String progressScore) {
         this.progressScore = progressScore;
     }
 }

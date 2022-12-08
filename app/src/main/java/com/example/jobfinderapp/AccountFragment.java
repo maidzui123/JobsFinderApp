@@ -104,19 +104,25 @@ public class AccountFragment extends Fragment {
         tvProgressString = mView.findViewById(R.id.tvProgressString);
 
         mainActivity = (MainActivity) getActivity();
-
-        tvProfileUsername.setText(mainActivity.getUsername());
-        tvProfileMajors.setText(mainActivity.getMajors());
-        pbProfileProgress.setProgress((int) mainActivity.getProgressScore());
+        if(tvProfileUsername.getText() == "" || tvProfileMajors.getText() == "")
+        {
+            tvProfileUsername.setText("*Unknown*");
+            tvProfileMajors.setText("*Unknown*");
+        }
+        else {
+            tvProfileUsername.setText(mainActivity.getUsername());
+            tvProfileMajors.setText(mainActivity.getMajors());
+        }
+//        pbProfileProgress.setProgress(Integer.parseInt(mainActivity.getProgressScore()));
         pbProfileProgress.setProgress(progressScore);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         userID = firebaseAuth.getCurrentUser().getUid();
-        if(mainActivity.getProgressScore() != 90)
-        {
-            updateProgress(userID, progressScore);
-
-        }
+//        if(Integer.parseInt(mainActivity.getProgressScore()) != 90)
+//        {
+//            updateProgress(userID, progressScore);
+//
+//        }
         ivProfileAvatar.setImageURI(imageUri);
 
         mTakePhoto = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {

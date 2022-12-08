@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
     private String userID;
     private String strProfileFullName, strProfileMajors;
-    private double strProgressScore;
+    private String strProgressScore;
     private CustomProgressDialog customProgressDialog;
 
     @Override
@@ -83,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
     public String getMajors() {
         return strProfileMajors;
     }
-    public double getProgressScore() {
+    public String getProgressScore() {
         return strProgressScore;
     }
 
@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
                 strProfileFullName = value.getString("fullName");
                 strProfileMajors = value.getString("majors");
-                strProgressScore = value.getDouble("progressScore");
+//                strProgressScore = value.getString("progressScore");
             }
         });
     }

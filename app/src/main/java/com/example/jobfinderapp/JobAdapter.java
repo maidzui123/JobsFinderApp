@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,10 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobAdapter extends RecyclerView.Adapter {
-    //Dữ liệu hiện thị là danh sách sinh viên
+public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
     private List mJobs;
-    // Lưu Context để dễ dàng truy cập
     private Context mContext;
     public JobAdapter(List _Jobs, Context mContext) {
         this.mJobs = _Jobs;
@@ -27,19 +26,40 @@ public class JobAdapter extends RecyclerView.Adapter {
         Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        // Nạp layout cho View biểu diễn phần tử sinh viên
-        View studentView =
+        View jobView =
                 inflater.inflate(R.layout.item_job, parent, false);
 
-        ViewHolder viewHolder = new ViewHolder(studentView);
+        ViewHolder viewHolder = new ViewHolder(jobView);
         return viewHolder;
 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
+    public void onBindViewHolder(ViewHolder holder, int position) {
         Job job = (Job) mJobs.get(position);
-
+        holder.tvJobName.setText(job.getJobName());
+        holder.tvJobCompany.setText(job.getJobCompany());
+        holder.tvJobType.setText(job.getJobType());
+        holder.tvJobSalary.setText(job.getJobSalary());
+        holder.tvJobLocation.setText(job.getJobLocation());
+        if (holder.tvJobCompany.getText().equals("Tumblr")) {
+            holder.ivJobLogo.setImageResource(R.drawable.tumblr_logo);
+        }
+        if(holder.tvJobCompany.getText().equals("Youtube")) {
+            holder.ivJobLogo.setImageResource(R.drawable.youtube_logo);
+        }
+        if(holder.tvJobCompany.getText().equals("Facebook")) {
+            holder.ivJobLogo.setImageResource(R.drawable.facebook_logo);
+        }
+        if(holder.tvJobCompany.getText().equals("Discord")) {
+            holder.ivJobLogo.setImageResource(R.drawable.discord_logo);
+        }
+        if(holder.tvJobCompany.getText().equals("Spotify")) {
+            holder.ivJobLogo.setImageResource(R.drawable.spotify_logo);
+        }
+        if(holder.tvJobCompany.getText().equals("Twitter")) {
+            holder.ivJobLogo.setImageResource(R.drawable.twitter_logo);
+        }
     }
 
     @Override
@@ -47,23 +67,20 @@ public class JobAdapter extends RecyclerView.Adapter {
         return mJobs.size();
     }
 
-    /**
-     * Lớp nắm giữ cấu trúc view
-     */
+
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private View itemview;
-        private TextView tvJobName, tvJobCompany, tvJobSalary, tvJobLocation, tvJobStyle;
-
-//        public TextView studentname;
-//        public TextView birthyear;
-//        public Button detail_button;
-
+        View item_view;
+        TextView tvJobName, tvJobCompany, tvJobSalary, tvJobLocation, tvJobType;
+        ImageView ivJobLogo;
         public ViewHolder(View itemView) {
             super(itemView);
-            itemview = itemView;
-//            studentname = itemView.findViewById(R.id.studentname);
-//            birthyear = itemView.findViewById(R.id.birthyear);
-//            detail_button = itemView.findViewById(R.id.detail_button);
+            item_view = itemView;
+            tvJobName = itemView.findViewById(R.id.tvJobName);
+            tvJobCompany = itemView.findViewById(R.id.tvJobCompany);
+            tvJobLocation = itemView.findViewById(R.id.tvJobLocation);
+            tvJobSalary = itemView.findViewById(R.id.tvJobSalary);
+            tvJobType = itemView.findViewById(R.id.tvJobType);
+            ivJobLogo = itemView.findViewById(R.id.ivJobLogo);
 
             //Xử lý khi nút Chi tiết được bấm
 //            detail_button.setOnClickListener(new View.OnClickListener() {
