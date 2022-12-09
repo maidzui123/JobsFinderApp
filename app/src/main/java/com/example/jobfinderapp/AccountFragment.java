@@ -104,7 +104,7 @@ public class AccountFragment extends Fragment {
         tvProgressString = mView.findViewById(R.id.tvProgressString);
 
         mainActivity = (MainActivity) getActivity();
-        if(tvProfileUsername.getText() == "" || tvProfileMajors.getText() == "")
+        if(mainActivity.getUsername() == "" || mainActivity.getMajors() == "")
         {
             tvProfileUsername.setText("*Unknown*");
             tvProfileMajors.setText("*Unknown*");
@@ -369,7 +369,7 @@ public class AccountFragment extends Fragment {
         map.put("gender", gender);
         map.put("phoneNumber", phoneNumber);
         map.put("majors", majors);
-        docRef.set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+        docRef.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 if(pbProfileProgress.getProgress() != 90){
