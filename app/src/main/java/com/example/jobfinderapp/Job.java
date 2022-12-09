@@ -3,6 +3,8 @@ package com.example.jobfinderapp;
 public class Job {
     private String jobName, jobCompany, jobSalary, jobLocation, jobType;
 
+    public Job() {
+    }
     public Job(String jobName, String jobCompany, String jobSalary, String jobLocation, String jobType) {
         this.jobName = jobName;
         this.jobCompany = jobCompany;

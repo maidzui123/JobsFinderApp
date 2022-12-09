@@ -369,7 +369,7 @@ public class AccountFragment extends Fragment {
         map.put("gender", gender);
         map.put("phoneNumber", phoneNumber);
         map.put("majors", majors);
-        docRef.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+        docRef.set(map).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 if(pbProfileProgress.getProgress() != 90){

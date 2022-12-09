@@ -42,24 +42,32 @@ public class HomeFragment extends Fragment {
     }
     private ImageButton ibHomeFilter;
     private View mView;
+
     private RecyclerView rvSuggestedJob;
     private JobAdapter adapter;
     private FirebaseFirestore firebaseFirestore;
+
+    private CustomProgressDialog customProgressDialog;
+
     ArrayList<Job> jobs;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         mView = inflater.inflate(R.layout.fragment_home, container, false);
         ibHomeFilter = mView.findViewById(R.id.ibHomeFilter);
+        customProgressDialog = new CustomProgressDialog(getContext());
         rvSuggestedJob = mView.findViewById(R.id.rvSuggestedJob);
-
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+        rvSuggestedJob.setLayoutManager(linearLayoutManager);
+        rvSuggestedJob.setHasFixedSize(true);
+        customProgressDialog.show();
         firebaseFirestore = FirebaseFirestore.getInstance();
+        jobs = new ArrayList<Job>();
+        adapter = new JobAdapter(jobs, getContext());
+        rvSuggestedJob.setAdapter(adapter);
 
+        EventChangeListener();
 
-
-        //Query
-//        Query query = firebaseFirestore.collection("Jobs");
-        //RecycleOptions
         ibHomeFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,18 +77,34 @@ public class HomeFragment extends Fragment {
         return mView;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        jobs = new ArrayList<Job>();
-//        dataInitialize();
-        adapter = new JobAdapter(jobs, getContext());
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-        rvSuggestedJob.setLayoutManager(linearLayoutManager);
-        rvSuggestedJob.setHasFixedSize(true);
-        rvSuggestedJob.setAdapter(adapter);
-        EventChangeListener();
-    }
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        jobs = new ArrayList<Job>();
+////        dataInitialize();
+//        adapter = new JobAdapter(jobs, getContext());
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//        rvSuggestedJob.setLayoutManager(linearLayoutManager);
+//        rvSuggestedJob.setHasFixedSize(true);
+//        rvSuggestedJob.setAdapter(adapter);
+//        firebaseFirestore.collection("Jobs").orderBy("jobName", Query.Direction.ASCENDING)
+//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                        if(error != null) {
+//                            Log.e("Database error", error.getMessage());
+//                            return;
+//                        }
+//                        for (DocumentChange dc : value.getDocumentChanges()) {
+//                            if (dc.getType() == DocumentChange.Type.ADDED) {
+//                                jobs.add(dc.getDocument().toObject(Job.class));
+//                            }
+//                            adapter.notifyDataSetChanged();
+//                        }
+//                    }
+//                });
+////        EventChangeListener();
+//    }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
@@ -107,6 +131,8 @@ public class HomeFragment extends Fragment {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                         if(error != null) {
+                            if(customProgressDialog.isShowing())
+                                customProgressDialog.dismiss();
                             Log.e("Database error", error.getMessage());
                             return;
                         }
@@ -115,6 +141,8 @@ public class HomeFragment extends Fragment {
                                 jobs.add(dc.getDocument().toObject(Job.class));
                             }
                             adapter.notifyDataSetChanged();
+                            if(customProgressDialog.isShowing())
+                                customProgressDialog.dismiss();
                         }
                     }
                 });

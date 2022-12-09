@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
+public class    JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
     private List mJobs;
     private Context mContext;
     public JobAdapter(List _Jobs, Context mContext) {
