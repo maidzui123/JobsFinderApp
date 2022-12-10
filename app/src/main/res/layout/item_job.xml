@@ -39,6 +39,7 @@
                 android:text="IT Support"
                 android:textSize="18dp"
                 android:textColor="@color/black"
+                android:fontFamily="sans-serif-light"
                 android:textStyle="bold"/>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -52,6 +53,7 @@
                     android:layout_weight="1"
                     android:text="Tumblr"
                     android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
                     android:textColor="#999999"
                     android:textStyle="normal"/>
                 <TextView
@@ -61,6 +63,7 @@
                     android:layout_weight="1"
                     android:text="$1500/Mo"
                     android:textSize="16dp"
+                    android:fontFamily="sans-serif-light"
                     android:textColor="@color/orange"
                     android:textStyle="bold"
                     android:gravity="end"
@@ -83,6 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Ha Noi"
+            android:fontFamily="sans-serif-light"
             android:textStyle="bold"
             android:textColor="#999999"
             android:textSize="15dp"/>
@@ -97,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Full-time"
+            android:fontFamily="sans-serif-light"
             android:textStyle="bold"
             android:textColor="#999999"
             android:textSize="15dp"/>

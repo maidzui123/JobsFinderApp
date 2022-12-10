@@ -62,20 +62,25 @@
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/big_button_stroke.xml" value="0.154" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/bottom_dialog_bg.xml" value="0.1" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/btn_on_boarding.xml" value="0.13" />
+        <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/bullet_point.xml" value="0.14666666666666667" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/edit_text_input.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/edit_text_intput.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/enter_left_to_right.xml" value="0.1" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_account.xml" value="0.1" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_applied.xml" value="0.1" />
+        <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_back.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_baseline_remove_24.xml" value="0.1" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_bell.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_categories.xml" value="0.145" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_clock.xml" value="0.145" />
+        <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_field.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_filter.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_home.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_location.xml" value="0.145" />
+        <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_logout.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_nearby.xml" value="0.1" />
+        <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_rate.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/ic_three_dot_vert.xml" value="0.1" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/icon_search.xml" value="0.13" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/drawable/item_selector.xml" value="0.1185" />
@@ -95,6 +100,7 @@
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/activity_reset_password.xml" value="0.2" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/activity_sign_in.xml" value="0.22" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/activity_sign_up.xml" value="0.2" />
+        <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/activity_single_job.xml" value="0.16666666666666666" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/activity_splash.xml" value="0.2" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/bottom_sheet_dialog.xml" value="0.22" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/fragment_account.xml" value="0.16666666666666666" />
@@ -107,8 +113,10 @@
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/fragment_on_boarding2.xml" value="0.2" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/fragment_on_boarding3.xml" value="0.2" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/frame_bottom_sheet_dialog.xml" value="0.17864583333333334" />
+        <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/item_job.xml" value="0.3333333333333333" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/job_dropdown_item.xml" value="0.17864583333333334" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/layout_dialog_feedback.xml" value="0.22" />
+        <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/layout_dialog_info.xml" value="0.14743589743589744" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/layout_dialog_ratestar.xml" value="0.16666666666666666" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/layout/loading_layout.xml" value="0.22" />
         <entry key="..\:/JobsFinder/JobsFinderApp/app/src/main/res/menu/item_menu.xml" value="0.19895833333333332" />
