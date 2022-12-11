@@ -1,11 +1,14 @@
 package com.example.jobfinderapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -60,6 +63,19 @@ public class    JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
         if(holder.tvJobCompany.getText().equals("Twitter")) {
             holder.ivJobLogo.setImageResource(R.drawable.twitter_logo);
         }
+        holder.lnSingleJob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext.getApplicationContext(), SingleJobActivity.class);
+                intent.putExtra("tvSingleJobName", job.getJobName());
+                intent.putExtra("tvSingleJobCompany", job.getJobCompany());
+                intent.putExtra("tvSingleJobField", job.getJobField());
+                intent.putExtra("tvSingleJobLocation", job.getJobLocation());
+                intent.putExtra("tvSingleJobType", job.getJobType());
+                intent.putExtra("tvSingleJobSalary", job.getJobSalary());
+                mContext.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -71,6 +87,7 @@ public class    JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         View item_view;
         TextView tvJobName, tvJobCompany, tvJobSalary, tvJobLocation, tvJobType;
+        LinearLayout lnSingleJob;
         ImageView ivJobLogo;
         public ViewHolder(View itemView) {
             super(itemView);
@@ -81,7 +98,7 @@ public class    JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
             tvJobSalary = itemView.findViewById(R.id.tvJobSalary);
             tvJobType = itemView.findViewById(R.id.tvJobType);
             ivJobLogo = itemView.findViewById(R.id.ivJobLogo);
-
+            lnSingleJob = itemView.findViewById(R.id.lnSingleJob);
             //Xử lý khi nút Chi tiết được bấm
 //            detail_button.setOnClickListener(new View.OnClickListener() {
 //                @Override

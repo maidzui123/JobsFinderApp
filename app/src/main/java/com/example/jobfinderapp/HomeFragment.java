@@ -126,7 +126,7 @@ public class HomeFragment extends Fragment {
 //
 //    }
     private void EventChangeListener() {
-        firebaseFirestore.collection("Jobs").orderBy("jobName", Query.Direction.ASCENDING)
+        firebaseFirestore.collection("Jobs").orderBy("jobSalary", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
