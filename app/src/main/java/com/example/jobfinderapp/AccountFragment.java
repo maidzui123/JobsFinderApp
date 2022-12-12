@@ -73,7 +73,7 @@ public class AccountFragment extends Fragment {
     private FirebaseFirestore firebaseFirestore;
     private String userID;
     private StorageReference storageRef;
-
+    Map<String, Object> map = new HashMap<>();
     static int progressScore;
 
 
@@ -113,16 +113,11 @@ public class AccountFragment extends Fragment {
             tvProfileUsername.setText(mainActivity.getUsername());
             tvProfileMajors.setText(mainActivity.getMajors());
         }
-//        pbProfileProgress.setProgress(Integer.parseInt(mainActivity.getProgressScore()));
         pbProfileProgress.setProgress(progressScore);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
         userID = firebaseAuth.getCurrentUser().getUid();
-//        if(Integer.parseInt(mainActivity.getProgressScore()) != 90)
-//        {
-//            updateProgress(userID, progressScore);
-//
-//        }
+
         ivProfileAvatar.setImageURI(imageUri);
 
         mTakePhoto = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
@@ -220,11 +215,38 @@ public class AccountFragment extends Fragment {
         }
         TextInputLayout tilSendFeedback = dialog.findViewById(R.id.tilSendFeedback);
         Button btnSendFeedback = dialog.findViewById(R.id.btnSendFeedback);
-
         btnSendFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getActivity(), "Send Feedback", Toast.LENGTH_SHORT).show();
+                if(progressScore == 30)
+                {
+                    tvProgressString.setText("(1/3)");
+                }
+                else if (progressScore == 60)
+                {
+                    tvProgressString.setText("(2/3)");
+                }
+                else if (progressScore == 90)
+                {
+                    tvProgressString.setText("(3/3)");
+                }
+                final DocumentReference docRefFeedback = FirebaseFirestore.getInstance().collection("User").document(userID);
+                map.put("feedBack", tilSendFeedback.getEditText().getText().toString());
+                docRefFeedback.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        if(pbProfileProgress.getProgress() != 90){
+                            progressScore += 30;
+                            pbProfileProgress.setProgress(progressScore);
+                        }
+                        Toast.makeText(getActivity(),"Thank you for feedback <3", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
                 dialog.dismiss();
             }
         });
@@ -275,11 +297,7 @@ public class AccountFragment extends Fragment {
         btnRateStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(pbProfileProgress.getProgress() != 90){
-                    progressScore += 30;
-                    pbProfileProgress.setProgress(progressScore);
-                }
-                if(progressScore == 30)
+                    if(progressScore == 30)
                 {
                     tvProgressString.setText("(1/3)");
                 }
@@ -291,6 +309,24 @@ public class AccountFragment extends Fragment {
                 {
                     tvProgressString.setText("(3/3)");
                 }
+                final DocumentReference docRefFeedback = FirebaseFirestore.getInstance().collection("User").document(userID);
+                int finalRating = (int) myRating;
+                map.put("rateStar", String.valueOf(finalRating));
+                docRefFeedback.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        if(pbProfileProgress.getProgress() != 90){
+                            progressScore += 30;
+                            pbProfileProgress.setProgress(progressScore);
+                        }
+                        Toast.makeText(getActivity(),"Thank you for rating <3", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                });
                 dialog.dismiss();
             }
         });
@@ -347,7 +383,7 @@ public class AccountFragment extends Fragment {
                 else {
                     gender = "";
                 }
-                updateUser(userID, tilProfileFullName.getEditText().getText().toString(),
+                updateUser(tilProfileFullName.getEditText().getText().toString(),
                         tilProfileBirthday.getEditText().getText().toString(),
                         gender,
                         tilProfilePhoneNumber.getEditText().getText().toString(),
@@ -359,17 +395,16 @@ public class AccountFragment extends Fragment {
 
         dialog.show();
     }
-
-    private void updateUser(String userID, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors) {
-        final DocumentReference docRef = FirebaseFirestore.getInstance().collection("User").document(userID);
-        Map<String, Object> map = new HashMap<>();
+    // Update du lieu moi len Firestore
+    private void updateUser(String fullName, String birthDay, String gender, String phoneNumber, String address, String majors) {
+        final DocumentReference docRefInfo = FirebaseFirestore.getInstance().collection("User").document(userID);
         map.put("fullName", fullName);
         map.put("address", address);
         map.put("birthDay", birthDay);
         map.put("gender", gender);
         map.put("phoneNumber", phoneNumber);
         map.put("majors", majors);
-        docRef.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+        docRefInfo.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
                 if(pbProfileProgress.getProgress() != 90){
@@ -426,28 +461,28 @@ public class AccountFragment extends Fragment {
             });
         }
     }
-    private void updateProgress(String userID, int progressScore) {
-        final DocumentReference docRef = FirebaseFirestore.getInstance().collection("User").document(userID);
-        Map<String, Object> map = new HashMap<>();
-        if(progressScore == 0)
-        {
-            map.put("progressScore", 0);
-            docRef.update(map);
-        }
-        else if(progressScore == 30)
-        {
-            map.put("progressScore", 30);
-            docRef.update(map);
-        }
-        else if(progressScore == 60)
-        {
-            map.put("progressScore", 60);
-            docRef.update(map);
-        }
-        else {
-            map.put("progressScore", 90);
-            docRef.update(map);
-        }
-
-    }
+//    private void updateProgress(String userID, int progressScore) {
+//        final DocumentReference docRef = FirebaseFirestore.getInstance().collection("User").document(userID);
+//        Map<String, Object> map = new HashMap<>();
+//        if(progressScore == 0)
+//        {
+//            map.put("progressScore", 0);
+//            docRef.update(map);
+//        }
+//        else if(progressScore == 30)
+//        {
+//            map.put("progressScore", 30);
+//            docRef.update(map);
+//        }
+//        else if(progressScore == 60)
+//        {
+//            map.put("progressScore", 60);
+//            docRef.update(map);
+//        }
+//        else {
+//            map.put("progressScore", 90);
+//            docRef.update(map);
+//        }
+//
+//    }
 }

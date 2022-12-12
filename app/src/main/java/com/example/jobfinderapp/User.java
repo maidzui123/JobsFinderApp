@@ -3,12 +3,14 @@ package com.example.jobfinderapp;
 import android.net.Uri;
 
 public class User {
-    public String email, userName, fullName, birthDay, gender, phoneNumber, address, majors, profilePicture;
-    public String progressScore;
+    public String email, userName, fullName, birthDay, gender, phoneNumber, address, majors, profilePicture, rateStar, feedBack;
     public User(){
 
     }
-    public User(String email, String userName, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String profilePicture, String progressScore){
+
+
+
+    public User(String email, String userName, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String profilePicture, String rateStar, String feedBack){
         this.email = email;
         this.userName = userName;
         this.fullName = fullName;
@@ -18,7 +20,8 @@ public class User {
         this.address = address;
         this.majors = majors;
         this.profilePicture = profilePicture;
-        this.progressScore = progressScore;
+        this.rateStar = rateStar;
+        this.feedBack = feedBack;
     }
 
     public String getEmail() {
@@ -93,11 +96,19 @@ public class User {
         this.majors = majors;
     }
 
-    public String getProgressScore() {
-        return progressScore;
+    public String getRateStar() {
+        return rateStar;
     }
 
-    public void setProgressScore(String progressScore) {
-        this.progressScore = progressScore;
+    public void setRateStar(String rateStar) {
+        this.rateStar = rateStar;
+    }
+
+    public String getFeedBack() {
+        return feedBack;
+    }
+
+    public void setFeedBack(String feedBack) {
+        this.feedBack = feedBack;
     }
 }

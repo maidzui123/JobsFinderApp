@@ -17,6 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
             android:orientation="vertical">
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -66,16 +67,17 @@
                 android:textColor="@color/black"
                 android:fontFamily="sans-serif-light"
                 android:layout_gravity="center" />
+
             <TextView
                 android:id="@+id/tvProfileMajors"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:textColor="#999999"
                 android:fontFamily="sans-serif-light"
-                android:layout_gravity="center" />
+                android:textColor="#999999"
+                android:textSize="20sp"
+                android:textStyle="bold" />
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -121,49 +123,51 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
                     <LinearLayout
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
                         android:orientation="vertical"
                         android:padding="5dp"
                         android:background="@drawable/small_button_stroke">
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:src="@drawable/ic_profile"
                             android:layout_marginTop="10dp"
                             android:layout_gravity="center"/>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Set Your Profile Details"
                             android:layout_marginTop="5dp"
-                            android:textStyle="bold"
-                            android:textSize="14sp"
-                            android:textColor="@color/black"
                             android:fontFamily="sans-serif-light"
-                            android:gravity="center"/>
+                            android:gravity="center"
+                            android:text="Set Your Profile Details"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <Button
                             android:id="@+id/btnProfileDetail"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="Complete"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:textStyle="bold"
                             android:fontFamily="sans-serif-light"
                             android:textAllCaps="false"
                             />
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
                         android:orientation="vertical"
                         android:padding="5dp"
                         android:layout_marginLeft="15dp"
                         android:background="@drawable/small_button_stroke">
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:src="@drawable/ic_picture"
                             android:layout_marginTop="10dp"
                             android:layout_gravity="center"/>
@@ -174,7 +178,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"
-                            android:textSize="14sp"
+                            android:textSize="18sp"
                             android:textColor="@color/black"
                             android:fontFamily="sans-serif-light"
                             android:gravity="center"/>
@@ -184,23 +188,22 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="Upload"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
                             android:fontFamily="sans-serif-light"
                             android:textAllCaps="false"
                             />
                     </LinearLayout>
                     <LinearLayout
-                        android:layout_width="140dp"
-                        android:layout_height="140dp"
+                        android:layout_width="160dp"
+                        android:layout_height="160dp"
                         android:orientation="vertical"
                         android:padding="5dp"
                         android:layout_marginLeft="15dp"
                         android:background="@drawable/small_button_stroke">
                         <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
                             android:src="@drawable/ic_rate"
                             android:layout_marginTop="10dp"
                             android:layout_gravity="center"/>
@@ -211,7 +214,7 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:textStyle="bold"
-                            android:textSize="14sp"
+                            android:textSize="18sp"
                             android:textColor="@color/black"
                             android:fontFamily="sans-serif-light"
                             android:gravity="center"/>
@@ -221,9 +224,9 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:text="Rate"
-                            android:textSize="12dp"
+                            android:textSize="16dp"
                             android:textStyle="bold"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="20dp"
                             android:fontFamily="sans-serif-light"
                             android:textAllCaps="false"
                             />

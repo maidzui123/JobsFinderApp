@@ -125,6 +125,8 @@ public class HomeFragment extends Fragment {
 //        }
 //
 //    }
+
+    // Get data Field co tren Firestore
     private void EventChangeListener() {
         firebaseFirestore.collection("Jobs").orderBy("jobSalary", Query.Direction.ASCENDING)
                 .addSnapshotListener(new EventListener<QuerySnapshot>() {

@@ -151,6 +151,8 @@ public class SignUpActivity extends AppCompatActivity {
         String userName= tilSignUpUsername.getEditText().getText().toString();
         String password = tilSignUpPassword.getEditText().getText().toString();
         customProgressDialog.show();
+
+        // Tao user moi FireStore
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override
@@ -159,7 +161,7 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Sign Up Successful",Toast.LENGTH_SHORT).show();
                         firebaseFirestore.collection("User")
                                 .document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
-                                .set(new User(email, userName, "", "", "", "", "","", "", "0"));
+                                .set(new User(email, userName, "", "", "", "", "","", "", "",""));
                         customProgressDialog.cancel();
                         finish();
                     }

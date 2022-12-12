@@ -73,6 +73,10 @@ public class    JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
                 intent.putExtra("tvSingleJobLocation", job.getJobLocation());
                 intent.putExtra("tvSingleJobType", job.getJobType());
                 intent.putExtra("tvSingleJobSalary", job.getJobSalary());
+                intent.putExtra("tvSingleJobField", job.getJobField());
+                intent.putExtra("tvSingleJobRq1", job.getJobRq1());
+                intent.putExtra("tvSingleJobRq2", job.getJobRq2());
+                intent.putExtra("tvSingleJobRq3", job.getJobRq3());
                 mContext.startActivity(intent);
             }
         });
@@ -99,16 +103,7 @@ public class    JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
             tvJobType = itemView.findViewById(R.id.tvJobType);
             ivJobLogo = itemView.findViewById(R.id.ivJobLogo);
             lnSingleJob = itemView.findViewById(R.id.lnSingleJob);
-            //Xử lý khi nút Chi tiết được bấm
-//            detail_button.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Toast.makeText(view.getContext(),
-//                                    studentname.getText() +" | "
-//                                            + " Demo function", Toast.LENGTH_SHORT)
-//                            .show();
-//                }
-//            });
+
         }
     }
 

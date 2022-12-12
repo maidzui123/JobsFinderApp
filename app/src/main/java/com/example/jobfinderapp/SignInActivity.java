@@ -103,6 +103,8 @@ public class SignInActivity extends AppCompatActivity {
             return;
         }
         customProgressDialog.show();
+
+        // Kiem tra email va password da co tren Firebase moi cho dang nhap
         firebaseAuth.signInWithEmailAndPassword(userName,password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                     @Override

@@ -65,6 +65,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
         if (!validateEmail()) {
             return;
         }
+        // Reset password khi nhap vao email
         firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
