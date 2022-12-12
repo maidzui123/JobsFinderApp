@@ -175,7 +175,7 @@ public class AccountFragment extends Fragment {
         btnProfileDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openDetailsDialog(Gravity.CENTER, userID);
+                openDetailsDialog(Gravity.CENTER);
             }
         });
         if(progressScore == 30)
@@ -332,7 +332,7 @@ public class AccountFragment extends Fragment {
         });
         dialog.show();
     }
-    private void openDetailsDialog(int gravity, String userID) {
+    private void openDetailsDialog(int gravity) {
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.layout_dialog_info);
