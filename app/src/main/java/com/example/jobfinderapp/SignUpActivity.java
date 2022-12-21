@@ -26,6 +26,9 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Objects;
 
 public class SignUpActivity extends AppCompatActivity {
@@ -150,8 +153,8 @@ public class SignUpActivity extends AppCompatActivity {
         String email= tilSignUpEmail.getEditText().getText().toString();
         String userName= tilSignUpUsername.getEditText().getText().toString();
         String password = tilSignUpPassword.getEditText().getText().toString();
+        List<String> emptyList = new ArrayList<>();
         customProgressDialog.show();
-
         // Tao user moi FireStore
         firebaseAuth.createUserWithEmailAndPassword(email,password)
                 .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -161,7 +164,7 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Sign Up Successful",Toast.LENGTH_SHORT).show();
                         firebaseFirestore.collection("User")
                                 .document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
-                                .set(new User(email, userName, "", "", "", "", "","", "", "",""));
+                                .set(new User(email, userName, "", "", "", "", "","", "", "","", emptyList));
                         customProgressDialog.cancel();
                         finish();
                     }

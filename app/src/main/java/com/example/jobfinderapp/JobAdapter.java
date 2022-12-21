@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class    JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
+public class JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
     private List mJobs;
     private Context mContext;
     public JobAdapter(List _Jobs, Context mContext) {
@@ -67,6 +67,7 @@ public class    JobAdapter extends RecyclerView.Adapter<JobAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext.getApplicationContext(), SingleJobActivity.class);
+                intent.putExtra("strSingleJobId", job.getJobId());
                 intent.putExtra("tvSingleJobName", job.getJobName());
                 intent.putExtra("tvSingleJobCompany", job.getJobCompany());
                 intent.putExtra("tvSingleJobField", job.getJobField());

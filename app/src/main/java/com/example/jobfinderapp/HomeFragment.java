@@ -24,16 +24,23 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.firebase.firestore.DocumentChange;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HomeFragment extends Fragment {
 
@@ -66,7 +73,7 @@ public class HomeFragment extends Fragment {
         adapter = new JobAdapter(jobs, getContext());
         rvSuggestedJob.setAdapter(adapter);
 
-        EventChangeListener();
+//        EventChangeListener();
 
         ibHomeFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,34 +84,30 @@ public class HomeFragment extends Fragment {
         return mView;
     }
 
-//    @Override
-//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        super.onViewCreated(view, savedInstanceState);
-//        jobs = new ArrayList<Job>();
-////        dataInitialize();
-//        adapter = new JobAdapter(jobs, getContext());
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
-//        rvSuggestedJob.setLayoutManager(linearLayoutManager);
-//        rvSuggestedJob.setHasFixedSize(true);
-//        rvSuggestedJob.setAdapter(adapter);
-//        firebaseFirestore.collection("Jobs").orderBy("jobName", Query.Direction.ASCENDING)
-//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-//                        if(error != null) {
-//                            Log.e("Database error", error.getMessage());
-//                            return;
-//                        }
-//                        for (DocumentChange dc : value.getDocumentChanges()) {
-//                            if (dc.getType() == DocumentChange.Type.ADDED) {
-//                                jobs.add(dc.getDocument().toObject(Job.class));
-//                            }
-//                            adapter.notifyDataSetChanged();
-//                        }
-//                    }
-//                });
-////        EventChangeListener();
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        firebaseFirestore.collection("Jobs").addSnapshotListener(getActivity(), new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot queryDocumentSnapshots, FirebaseFirestoreException e) {
+                if (e != null) {
+                    if(customProgressDialog.isShowing())
+                        customProgressDialog.dismiss();
+                    Log.e("Database error", e.getMessage());
+                    return;
+                }
+
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                    Job job = documentSnapshot.toObject(Job.class);
+                    job.setJobId(documentSnapshot.getId());
+                    jobs.add(job);
+                }
+                adapter.notifyDataSetChanged();
+                if(customProgressDialog.isShowing())
+                    customProgressDialog.dismiss();
+            }
+        });
+    }
 
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getParentFragmentManager();
@@ -127,38 +130,37 @@ public class HomeFragment extends Fragment {
 //    }
 
     // Get data Field co tren Firestore
-    private void EventChangeListener() {
-        firebaseFirestore.collection("Jobs").orderBy("jobSalary", Query.Direction.ASCENDING)
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                        if(error != null) {
-                            if(customProgressDialog.isShowing())
-                                customProgressDialog.dismiss();
-                            Log.e("Database error", error.getMessage());
-                            return;
-                        }
-                        for (DocumentChange dc : value.getDocumentChanges()) {
-                            if (dc.getType() == DocumentChange.Type.ADDED) {
-                                jobs.add(dc.getDocument().toObject(Job.class));
-                            }
-                            adapter.notifyDataSetChanged();
-                            if(customProgressDialog.isShowing())
-                                customProgressDialog.dismiss();
-                        }
-                    }
-                });
-    }
-
-//    private void showDialog() {
-//        final BottomSheetDialog dialog = new BottomSheetDialog(getActivity());
-//        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        dialog.setContentView(R.layout.frame_bottom_sheet_dialog);
-//        dialog.show();
-//        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-//        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-//        dialog.getWindow().setGravity(Gravity.BOTTOM);
-//    }
+//    private void EventChangeListener() {
+//        firebaseFirestore.collection("Jobs").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//            @Override
+//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+//                    Job job = documentSnapshot.toObject(Job.class);
+//                    job.setJobId(documentSnapshot.getId());
+//                    jobs.add(job);
+//                }
+//            }
+//        });
+//        firebaseFirestore.collection("Jobs").orderBy("jobSalary", Query.Direction.ASCENDING)
+//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+//                        if(error != null) {
+//                            if(customProgressDialog.isShowing())
+//                                customProgressDialog.dismiss();
+//                            Log.e("Database error", error.getMessage());
+//                            return;
+//                        }
+//                        for (DocumentChange dc : value.getDocumentChanges()) {
+//                            if (dc.getType() == DocumentChange.Type.ADDED) {
+//                                jobs.add(dc.getDocument().toObject(Job.class));
+//                            }
+//                            adapter.notifyDataSetChanged();
+//                            if(customProgressDialog.isShowing())
+//                                customProgressDialog.dismiss();
+//                        }
+//                    }
+//                });
 }
+
 

@@ -2,15 +2,16 @@ package com.example.jobfinderapp;
 
 import android.net.Uri;
 
+import java.util.List;
+
 public class User {
     public String email, userName, fullName, birthDay, gender, phoneNumber, address, majors, profilePicture, rateStar, feedBack;
+    public List<String> jobApplied;
     public User(){
 
     }
 
-
-
-    public User(String email, String userName, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String profilePicture, String rateStar, String feedBack){
+    public User(String email, String userName, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String profilePicture, String rateStar, String feedBack, List<String> jobApplied){
         this.email = email;
         this.userName = userName;
         this.fullName = fullName;
@@ -22,6 +23,7 @@ public class User {
         this.profilePicture = profilePicture;
         this.rateStar = rateStar;
         this.feedBack = feedBack;
+        this.jobApplied = jobApplied;
     }
 
     public String getEmail() {
@@ -111,4 +113,13 @@ public class User {
     public void setFeedBack(String feedBack) {
         this.feedBack = feedBack;
     }
+
+    public List<String> getJobApplied() {
+        return jobApplied;
+    }
+
+    public void setJobApplied(List<String> jobApplied) {
+        this.jobApplied = jobApplied;
+    }
 }
+

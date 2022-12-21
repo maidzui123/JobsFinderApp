@@ -5,14 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
 
 public class SingleJobActivity extends AppCompatActivity {
     private ImageView ivSingleJobLogo;
     private TextView tvSingleJobCompany, tvSingleJobName, tvSingleJobField, tvSingleJobLocation, tvSingleJobType, tvSingleJobRq1, tvSingleJobRq2, tvSingleJobRq3, tvSingleJobSalary;
     private ImageButton ibSingleJobBack;
+    private Button btnSingleJobApply;
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private FirebaseAuth firebaseAuth;
+    private CollectionReference jobsRef = db.collection("Jobs");
+    private CollectionReference userRef = db.collection("User");
+    private String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +44,7 @@ public class SingleJobActivity extends AppCompatActivity {
         tvSingleJobRq3 = findViewById(R.id.tvSingleJobRq3);
         tvSingleJobSalary = findViewById(R.id.tvSingleJobSalary);
         ibSingleJobBack = findViewById(R.id.ibSingleJobBack);
+        btnSingleJobApply = findViewById(R.id.btnSingleJobApply);
 
         tvSingleJobName.setText(getIntent().getStringExtra("tvSingleJobName"));
         tvSingleJobCompany.setText(getIntent().getStringExtra("tvSingleJobCompany"));
@@ -39,6 +56,8 @@ public class SingleJobActivity extends AppCompatActivity {
         tvSingleJobRq1.setText(getIntent().getStringExtra("tvSingleJobRq1"));
         tvSingleJobRq2.setText(getIntent().getStringExtra("tvSingleJobRq2"));
         tvSingleJobRq3.setText(getIntent().getStringExtra("tvSingleJobRq3"));
+        firebaseAuth = FirebaseAuth.getInstance();
+        userID = firebaseAuth.getCurrentUser().getUid();
 
         if (tvSingleJobCompany.getText().equals("Tumblr")) {
             ivSingleJobLogo.setImageResource(R.drawable.tumblr_logo);
@@ -65,5 +84,17 @@ public class SingleJobActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
+        btnSingleJobApply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateJobApplied(userID);
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                Toast.makeText(getApplicationContext(),"Apply Success!", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+    private void updateJobApplied(String userID) {
+        String jobId = getIntent().getStringExtra("strSingleJobId");
+        userRef.document(userID).update("jobApplied", FieldValue.arrayUnion(jobId));
     }
 }

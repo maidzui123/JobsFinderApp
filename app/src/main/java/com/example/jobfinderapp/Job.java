@@ -1,12 +1,13 @@
 package com.example.jobfinderapp;
 
 public class Job {
-    private String jobName, jobCompany, jobSalary, jobLocation, jobType, jobField, jobRq1, jobRq2, jobRq3;
+    private String jobId, jobName, jobCompany, jobSalary, jobLocation, jobType, jobField, jobRq1, jobRq2, jobRq3;
 
     public Job() {
     }
 
-    public Job(String jobName, String jobCompany, String jobSalary, String jobLocation, String jobType, String jobField, String jobRq1, String jobRq2, String jobRq3) {
+    public Job(String jobId, String jobName, String jobCompany, String jobSalary, String jobLocation, String jobType, String jobField, String jobRq1, String jobRq2, String jobRq3) {
+        this.jobId = jobId;
         this.jobName = jobName;
         this.jobCompany = jobCompany;
         this.jobSalary = jobSalary;
@@ -16,6 +17,14 @@ public class Job {
         this.jobRq1 = jobRq1;
         this.jobRq2 = jobRq2;
         this.jobRq3 = jobRq3;
+    }
+
+    public String getJobId() {
+        return jobId;
+    }
+
+    public void setJobId(String jobId) {
+        this.jobId = jobId;
     }
 
     public String getJobName() {
