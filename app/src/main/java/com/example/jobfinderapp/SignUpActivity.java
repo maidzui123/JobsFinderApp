@@ -164,7 +164,7 @@ public class SignUpActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Sign Up Successful",Toast.LENGTH_SHORT).show();
                         firebaseFirestore.collection("User")
                                 .document(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
-                                .set(new User(email, userName, "", "", "", "", "","", "", "","", emptyList));
+                                .set(new User(email, userName, "", "", "", "", "","", "", "","", "", emptyList, 0));
                         customProgressDialog.cancel();
                         finish();
                     }

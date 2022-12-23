@@ -38,11 +38,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.common.net.InternetDomainName;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 import java.net.URL;
 import java.text.SimpleDateFormat;
@@ -57,7 +61,7 @@ public class AccountFragment extends Fragment {
     public AccountFragment() {
         // Required empty public constructor
     }
-    private TextView tvProfileUsername, tvSendFeedback, tvProfileMajors;
+    private TextView tvProfileUsername, tvSendFeedback;
     private static TextView tvProgressString;
     private View mView;
     private ImageButton ibAccountPopUp;
@@ -70,22 +74,12 @@ public class AccountFragment extends Fragment {
     private static Uri imageUri;
     private ProgressBar pbProfileProgress;
     private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore firebaseFirestore;
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference userRef = db.collection("User");
     private String userID;
     private StorageReference storageRef;
     Map<String, Object> map = new HashMap<>();
     static int progressScore;
-
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -93,7 +87,6 @@ public class AccountFragment extends Fragment {
         mView = inflater.inflate(R.layout.fragment_account, container, false);
 
         tvProfileUsername = mView.findViewById(R.id.tvProfileUsername);
-        tvProfileMajors = mView.findViewById(R.id.tvProfileMajors);
         ibAccountPopUp = mView.findViewById(R.id.ibAccountPopUp);
         btnUploadPhoto = mView.findViewById(R.id.btnUploadPhoto);
         ivProfileAvatar = mView.findViewById(R.id.ivProfileAvatar);
@@ -104,29 +97,31 @@ public class AccountFragment extends Fragment {
         tvProgressString = mView.findViewById(R.id.tvProgressString);
 
         mainActivity = (MainActivity) getActivity();
-        if(mainActivity.getUsername() == "" || mainActivity.getMajors() == "")
-        {
-            tvProfileUsername.setText("*Unknown*");
-            tvProfileMajors.setText("*Unknown*");
-        }
-        else {
-            tvProfileUsername.setText(mainActivity.getUsername());
-            tvProfileMajors.setText(mainActivity.getMajors());
-        }
-        pbProfileProgress.setProgress(progressScore);
+        tvProfileUsername.setText(mainActivity.getUsername());
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseFirestore = FirebaseFirestore.getInstance();
         userID = firebaseAuth.getCurrentUser().getUid();
-
-        ivProfileAvatar.setImageURI(imageUri);
-
-        mTakePhoto = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+        userRef.document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
-            public void onActivityResult(Uri result) {
-                imageUri = result;
-                uploadAvatar();
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    double temp = documentSnapshot.getDouble("progressScore");
+                    int check = (int) temp;
+                    Toast.makeText(getActivity(),String.valueOf(check),Toast.LENGTH_SHORT).show();
+                    pbProfileProgress.setProgress(check);
+                    if(check == 30)
+                    {
+                        tvProgressString.setText("(1/3)");
+                    }
+                    else if (check == 60)
+                    {
+                        tvProgressString.setText("(2/3)");
+                    }
+                    else if (check == 90)
+                    {
+                        tvProgressString.setText("(3/3)");
+                    }
             }
         });
+        changeAvatar();
 
         ibAccountPopUp.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("RestrictedApi")
@@ -178,20 +173,31 @@ public class AccountFragment extends Fragment {
                 openDetailsDialog(Gravity.CENTER);
             }
         });
-        if(progressScore == 30)
-        {
-            tvProgressString.setText("(1/3)");
-        }
-        else if (progressScore == 60)
-        {
-            tvProgressString.setText("(2/3)");
-        }
-        else if (progressScore == 90)
-        {
-            tvProgressString.setText("(3/3)");
-        }
+
         return mView;
 
+    }
+
+    private void changeAvatar() {
+        userRef.document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if(documentSnapshot.getString("profilePicture").isEmpty())
+                {
+                    ivProfileAvatar.setImageResource(R.drawable.default_avatar);
+                }
+                else {
+                    Picasso.get().load(documentSnapshot.getString("profilePicture")).into(ivProfileAvatar);
+                }
+            }
+        });
+        mTakePhoto = registerForActivityResult(new ActivityResultContracts.GetContent(), new ActivityResultCallback<Uri>() {
+            @Override
+            public void onActivityResult(Uri result) {
+                imageUri = result;
+                uploadAvatar();
+            }
+        });
     }
     private void openFeedbackDialog(int gravity) {
         final Dialog dialog = new Dialog(getContext());
@@ -218,18 +224,7 @@ public class AccountFragment extends Fragment {
         btnSendFeedback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(progressScore == 30)
-                {
-                    tvProgressString.setText("(1/3)");
-                }
-                else if (progressScore == 60)
-                {
-                    tvProgressString.setText("(2/3)");
-                }
-                else if (progressScore == 90)
-                {
-                    tvProgressString.setText("(3/3)");
-                }
+
                 final DocumentReference docRefFeedback = FirebaseFirestore.getInstance().collection("User").document(userID);
                 map.put("feedBack", tilSendFeedback.getEditText().getText().toString());
                 docRefFeedback.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -238,6 +233,7 @@ public class AccountFragment extends Fragment {
                         if(pbProfileProgress.getProgress() != 90){
                             progressScore += 30;
                             pbProfileProgress.setProgress(progressScore);
+                            updateProgress();
                         }
                         Toast.makeText(getActivity(),"Thank you for feedback <3", Toast.LENGTH_SHORT).show();
                     }
@@ -297,7 +293,12 @@ public class AccountFragment extends Fragment {
         btnRateStar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    if(progressScore == 30)
+                if(pbProfileProgress.getProgress() != 90){
+                    progressScore += 30;
+                    pbProfileProgress.setProgress(progressScore);
+                    updateProgress();
+                }
+                if(progressScore == 30)
                 {
                     tvProgressString.setText("(1/3)");
                 }
@@ -309,16 +310,12 @@ public class AccountFragment extends Fragment {
                 {
                     tvProgressString.setText("(3/3)");
                 }
-                final DocumentReference docRefFeedback = FirebaseFirestore.getInstance().collection("User").document(userID);
+                final DocumentReference docRefFeedback = userRef.document(userID);
                 int finalRating = (int) myRating;
                 map.put("rateStar", String.valueOf(finalRating));
                 docRefFeedback.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void unused) {
-                        if(pbProfileProgress.getProgress() != 90){
-                            progressScore += 30;
-                            pbProfileProgress.setProgress(progressScore);
-                        }
                         Toast.makeText(getActivity(),"Thank you for rating <3", Toast.LENGTH_SHORT).show();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
@@ -346,13 +343,14 @@ public class AccountFragment extends Fragment {
         WindowManager.LayoutParams windowAttributes = window.getAttributes();
         windowAttributes.gravity = gravity;
         window.setAttributes(windowAttributes);
-        TextInputLayout tilProfileFullName, tilProfileBirthday, tilProfilePhoneNumber, tilProfileAddress, tilProfileMajors;
+        TextInputLayout tilProfileFullName, tilProfileBirthday, tilProfilePhoneNumber, tilProfileAddress, tilProfileMajors, tilProfileHobbies;
         RadioButton rbProfileMale, rbProfileFemale;
         tilProfileFullName = dialog.findViewById(R.id.tilProfileFullName);
         tilProfileBirthday = dialog.findViewById(R.id.tilProfileBirthday);
         tilProfilePhoneNumber = dialog.findViewById(R.id.tilProfilePhoneNumber);
         tilProfileAddress = dialog.findViewById(R.id.tilProfileAddress);
         tilProfileMajors = dialog.findViewById(R.id.tilProfileMajors);
+        tilProfileHobbies = dialog.findViewById(R.id.tilProfileHobbies);
         rbProfileMale = dialog.findViewById(R.id.rbProfileMale);
         rbProfileFemale = dialog.findViewById(R.id.rbProfileFemale);
         Button btnProfileConfirm = dialog.findViewById(R.id.btnProfileConfirm);
@@ -360,6 +358,11 @@ public class AccountFragment extends Fragment {
         btnProfileConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(pbProfileProgress.getProgress() != 90){
+                    progressScore += 30;
+                    pbProfileProgress.setProgress(progressScore);
+                    updateProgress();
+                }
                 if(progressScore == 30)
                 {
                     tvProgressString.setText("(1/3)");
@@ -388,29 +391,28 @@ public class AccountFragment extends Fragment {
                         gender,
                         tilProfilePhoneNumber.getEditText().getText().toString(),
                         tilProfileAddress.getEditText().getText().toString(),
-                        tilProfileMajors.getEditText().getText().toString());
+                        tilProfileMajors.getEditText().getText().toString(),
+                        tilProfileHobbies.getEditText().getText().toString()
+                );
                 dialog.dismiss();
             }
         });
 
         dialog.show();
     }
-    // Update du lieu moi len Firestore
-    private void updateUser(String fullName, String birthDay, String gender, String phoneNumber, String address, String majors) {
-        final DocumentReference docRefInfo = FirebaseFirestore.getInstance().collection("User").document(userID);
+    private void updateUser(String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String hobbies) {
+        final DocumentReference docRefInfo = userRef.document(userID);
         map.put("fullName", fullName);
         map.put("address", address);
         map.put("birthDay", birthDay);
         map.put("gender", gender);
         map.put("phoneNumber", phoneNumber);
         map.put("majors", majors);
+        map.put("hobbies", hobbies);
         docRefInfo.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void unused) {
-                if(pbProfileProgress.getProgress() != 90){
-                    progressScore += 30;
-                    pbProfileProgress.setProgress(progressScore);
-                }
+
                 Toast.makeText(getActivity(),"Update Success", Toast.LENGTH_SHORT).show();
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -428,13 +430,34 @@ public class AccountFragment extends Fragment {
         String image_name = formatter.format(now);
         if(imageUri != null) {
             customProgressDialog.show();
+            final DocumentReference docRefInfo = userRef.document(userID);
             storageRef = FirebaseStorage.getInstance().getReference("avatars/"+ image_name);
             storageRef.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                        @Override
+                        public void onSuccess(Uri uri) {
+                            map.put("profilePicture", uri.toString());
+                            docRefInfo.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(getActivity(),"Update Avatar Success", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+                                }
+                            });;
+                        }
+                    });
+                    ivProfileAvatar.setImageURI(imageUri);
+                    Toast.makeText(getActivity(), "Upload Avatar Success", Toast.LENGTH_SHORT).show();
                     if(pbProfileProgress.getProgress() != 90){
                         progressScore += 30;
                         pbProfileProgress.setProgress(progressScore);
+                        updateProgress();
                     }
                     if(progressScore == 30)
                     {
@@ -448,8 +471,6 @@ public class AccountFragment extends Fragment {
                     {
                         tvProgressString.setText("(3/3)");
                     }
-                    ivProfileAvatar.setImageURI(imageUri);
-                    Toast.makeText(getActivity(), "Upload Avatar Success", Toast.LENGTH_SHORT).show();
                     customProgressDialog.cancel();
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -461,28 +482,20 @@ public class AccountFragment extends Fragment {
             });
         }
     }
-//    private void updateProgress(String userID, int progressScore) {
-//        final DocumentReference docRef = FirebaseFirestore.getInstance().collection("User").document(userID);
-//        Map<String, Object> map = new HashMap<>();
-//        if(progressScore == 0)
-//        {
-//            map.put("progressScore", 0);
-//            docRef.update(map);
-//        }
-//        else if(progressScore == 30)
-//        {
-//            map.put("progressScore", 30);
-//            docRef.update(map);
-//        }
-//        else if(progressScore == 60)
-//        {
-//            map.put("progressScore", 60);
-//            docRef.update(map);
-//        }
-//        else {
-//            map.put("progressScore", 90);
-//            docRef.update(map);
-//        }
-//
-//    }
+
+    private void updateProgress() {
+        final DocumentReference docRefProgress = userRef.document(userID);
+        map.put("progressScore", progressScore);
+        docRefProgress.update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void unused) {
+                Toast.makeText(getActivity(),"Update Progress Success", Toast.LENGTH_SHORT).show();
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(getActivity(),e.getMessage(),Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

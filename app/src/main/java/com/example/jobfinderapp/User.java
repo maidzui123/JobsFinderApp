@@ -5,13 +5,14 @@ import android.net.Uri;
 import java.util.List;
 
 public class User {
-    public String email, userName, fullName, birthDay, gender, phoneNumber, address, majors, profilePicture, rateStar, feedBack;
+    public String email, userName, fullName, birthDay, gender, phoneNumber, address, majors, profilePicture, rateStar, feedBack, hobbies;
     public List<String> jobApplied;
+    public int progressScore;
     public User(){
 
     }
 
-    public User(String email, String userName, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String profilePicture, String rateStar, String feedBack, List<String> jobApplied){
+    public User(String email, String userName, String fullName, String birthDay, String gender, String phoneNumber, String address, String majors, String profilePicture, String rateStar, String feedBack, String hobbies, List<String> jobApplied, int progressScore){
         this.email = email;
         this.userName = userName;
         this.fullName = fullName;
@@ -23,7 +24,9 @@ public class User {
         this.profilePicture = profilePicture;
         this.rateStar = rateStar;
         this.feedBack = feedBack;
+        this.hobbies = hobbies;
         this.jobApplied = jobApplied;
+        this.progressScore = progressScore;
     }
 
     public String getEmail() {
@@ -114,12 +117,28 @@ public class User {
         this.feedBack = feedBack;
     }
 
+    public String getHobbies() {
+        return hobbies;
+    }
+
+    public void setHobbies(String hobbies) {
+        this.hobbies = hobbies;
+    }
+
     public List<String> getJobApplied() {
         return jobApplied;
     }
 
     public void setJobApplied(List<String> jobApplied) {
         this.jobApplied = jobApplied;
+    }
+
+    public int getProgressScore() {
+        return progressScore;
+    }
+
+    public void setProgressScore(int progressScore) {
+        this.progressScore = progressScore;
     }
 }
 

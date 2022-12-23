@@ -60,7 +60,7 @@ public class AppliedJobAdapter extends RecyclerView.Adapter<AppliedJobAdapter.Vi
         holder.tvAppliedJobName.setText(job.getJobName());
         holder.tvAppliedJobCompany.setText(job.getJobCompany());
         holder.tvAppliedJobType.setText(job.getJobType());
-        holder.tvAppliedJobId.setText(job.getJobId());
+        holder.tvAppliedJobSalary.setText(job.getJobSalary());
         holder.tvAppliedJobLocation.setText(job.getJobLocation());
         if (holder.tvAppliedJobCompany.getText().equals("Tumblr")) {
             holder.ivAppliedJobLogo.setImageResource(R.drawable.tumblr_logo);
@@ -98,7 +98,7 @@ public class AppliedJobAdapter extends RecyclerView.Adapter<AppliedJobAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         View item_view;
-        TextView tvAppliedJobName, tvAppliedJobCompany, tvAppliedJobId, tvAppliedJobLocation, tvAppliedJobType;
+        TextView tvAppliedJobName, tvAppliedJobCompany, tvAppliedJobSalary, tvAppliedJobLocation, tvAppliedJobType;
         ImageView ivAppliedJobLogo;
         ImageButton ibAppliedJobDelete;
         public ViewHolder(View itemView, OnItemClickListener listener) {
@@ -107,16 +107,11 @@ public class AppliedJobAdapter extends RecyclerView.Adapter<AppliedJobAdapter.Vi
             tvAppliedJobName = itemView.findViewById(R.id.tvAppliedJobName);
             tvAppliedJobCompany = itemView.findViewById(R.id.tvAppliedJobCompany);
             tvAppliedJobLocation = itemView.findViewById(R.id.tvAppliedJobLocation);
-            tvAppliedJobId = itemView.findViewById(R.id.tvAppliedJobId);
+            tvAppliedJobSalary = itemView.findViewById(R.id.tvAppliedJobSalary);
             tvAppliedJobType = itemView.findViewById(R.id.tvAppliedJobType);
             ivAppliedJobLogo = itemView.findViewById(R.id.ivAppliedJobLogo);
             ibAppliedJobDelete = itemView.findViewById(R.id.ibAppliedJobDelete);
-//            ibAppliedJobDelete.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//
-//                }
-//            });
+
         }
 
 

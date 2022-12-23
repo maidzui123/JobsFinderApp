@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseFirestore firebaseFirestore;
 
     private String userID;
-    private String strProfileFullName, strProfileMajors;
+    private String strProfileFullName;
 
 
     @Override
@@ -44,11 +44,11 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.nav_home:
                     replaceFragment(new HomeFragment());
                     break;
-                case R.id.nav_near:
-                    replaceFragment(new NearbyFragment());
-                    break;
                 case R.id.nav_applied:
                     replaceFragment(new AppliedFragment());
+                    break;
+                case R.id.nav_info:
+                    replaceFragment(new InfoFragment());
                     break;
                 case R.id.nav_account:
                     replaceFragment(new AccountFragment());
@@ -68,18 +68,13 @@ public class MainActivity extends AppCompatActivity {
     public String getUsername() {
         return strProfileFullName;
     }
-    public String getMajors() {
-        return strProfileMajors;
-    }
-
     // Lay thong tin user trong firebase dua vao UID
     private void getUserInfo(String userID) {
         DocumentReference documentReference = firebaseFirestore.collection("User").document(userID);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot value, @Nullable FirebaseFirestoreException error) {
-                strProfileFullName = value.getString("fullName");
-                strProfileMajors = value.getString("majors");
+                strProfileFullName = value.getString("userName");
             }
         });
     }
