@@ -12,7 +12,6 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.Gravity;
@@ -28,7 +27,6 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,19 +34,16 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.common.net.InternetDomainName;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -105,7 +100,6 @@ public class AccountFragment extends Fragment {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                     double temp = documentSnapshot.getDouble("progressScore");
                     int check = (int) temp;
-                    Toast.makeText(getActivity(),String.valueOf(check),Toast.LENGTH_SHORT).show();
                     pbProfileProgress.setProgress(check);
                     if(check == 30)
                     {
@@ -453,7 +447,6 @@ public class AccountFragment extends Fragment {
                         }
                     });
                     ivProfileAvatar.setImageURI(imageUri);
-                    Toast.makeText(getActivity(), "Upload Avatar Success", Toast.LENGTH_SHORT).show();
                     if(pbProfileProgress.getProgress() != 90){
                         progressScore += 30;
                         pbProfileProgress.setProgress(progressScore);

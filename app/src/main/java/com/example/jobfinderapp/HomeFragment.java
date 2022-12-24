@@ -73,8 +73,6 @@ public class HomeFragment extends Fragment {
         adapter = new JobAdapter(jobs, getContext());
         rvSuggestedJob.setAdapter(adapter);
 
-//        EventChangeListener();
-
         ibHomeFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -115,52 +113,6 @@ public class HomeFragment extends Fragment {
         fragmentTransaction.replace(R.id.flHomeFragment, fragment);
         fragmentTransaction.commit();
     }
-//    private void dataInitialize() {
-//
-//        String[] name = {"IT Support","IT Support","IT Support","IT Support","IT Support","IT Support"};
-//        String[] company = {"Tumblr","Youtube","Facebook","Discord","Spotify","Twitter"};
-//        String[] salary = {"$1500/Mo","$1500/Mo","$1500/Mo","$1500/Mo","$1500/Mo","$1500/Mo"};
-//        String[] address = {"Ha Noi","Ha Noi","Ha Noi","Ha Noi","Ha Noi","Ha Noi"};
-//        String[] type = {"Full-time","Full-time","Full-time","Full-time","Full-time","Full-time"};
-//        for(int i = 0; i < name.length; i++) {
-//            Job job = new Job(name[i], company[i], salary[i], address[i], type[i]);
-//            jobs.add(job);
-//        }
-//
-//    }
-
-    // Get data Field co tren Firestore
-//    private void EventChangeListener() {
-//        firebaseFirestore.collection("Jobs").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//            @Override
-//            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-//                    Job job = documentSnapshot.toObject(Job.class);
-//                    job.setJobId(documentSnapshot.getId());
-//                    jobs.add(job);
-//                }
-//            }
-//        });
-//        firebaseFirestore.collection("Jobs").orderBy("jobSalary", Query.Direction.ASCENDING)
-//                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-//                        if(error != null) {
-//                            if(customProgressDialog.isShowing())
-//                                customProgressDialog.dismiss();
-//                            Log.e("Database error", error.getMessage());
-//                            return;
-//                        }
-//                        for (DocumentChange dc : value.getDocumentChanges()) {
-//                            if (dc.getType() == DocumentChange.Type.ADDED) {
-//                                jobs.add(dc.getDocument().toObject(Job.class));
-//                            }
-//                            adapter.notifyDataSetChanged();
-//                            if(customProgressDialog.isShowing())
-//                                customProgressDialog.dismiss();
-//                        }
-//                    }
-//                });
 }
 
 

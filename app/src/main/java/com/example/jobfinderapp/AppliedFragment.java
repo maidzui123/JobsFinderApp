@@ -63,12 +63,6 @@ public class AppliedFragment extends Fragment {
         jobs = new ArrayList<Job>();
         adapter = new AppliedJobAdapter(jobs, getContext());
         rvAppliedJob.setAdapter(adapter);
-//        userRef.document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                List<String> listAppliedJob = (List<String>) documentSnapshot.get("jobApplied");
-//            }
-//        });
         adapter.setOnItemClickListener(new AppliedJobAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
@@ -119,35 +113,4 @@ public class AppliedFragment extends Fragment {
             }
         });
     }
-
-//    private void getAppliedJob() {
-//        userRef.document(userID).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                List<String> listAppliedJob = (List<String>) documentSnapshot.get("jobApplied");
-//                for (String appliedJobId : listAppliedJob) {
-//                    jobsRef.document(appliedJobId).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//                        @Override
-//                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                            Job job = new Job(appliedJobId,
-//                                    documentSnapshot.getString("jobName"),
-//                                    documentSnapshot.getString("jobCompany"),
-//                                    documentSnapshot.getString("jobSalary"),
-//                                    documentSnapshot.getString("jobLocation"),
-//                                    documentSnapshot.getString("jobType"),
-//                                    documentSnapshot.getString("jobField"),
-//                                    documentSnapshot.getString("jobRq1"),
-//                                    documentSnapshot.getString("jobRq2"),
-//                                    documentSnapshot.getString("jobRq3"));
-//                            jobs.add(job);
-//                            tvAppliedJobEmpty.setVisibility(View.INVISIBLE);
-//                            adapter.notifyDataSetChanged();
-//                            if (customProgressDialog.isShowing())
-//                                customProgressDialog.dismiss();
-//                        }
-//                    });
-//                }
-//            }
-//        });
-//    }
 }
